@@ -1,7 +1,6 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS, YTAPILoaded } from '../constants';
 
-// let player;
 // class Element extends Component {
 const Element = () => {
 
@@ -15,14 +14,10 @@ const Element = () => {
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   }, [player])
 
-
   if (!player) {YTAPILoaded.then(YT => {
-    // new YT.Player('the-frame', {})
-    // player = new YT.Player('the-frame', {})
     setPlayer(new YT.Player('the-frame', {}))
 
     console.log('in apiloaded', player)
-
   })}
 
   let handleClick = () => {
