@@ -23,6 +23,9 @@ const Formula = (props) => {
 
   return (
     <div className='formula-box'>
+      <div className='formula-head'>
+        <h2>{props.formula.title}</h2>
+      </div>
       {props.elements.map( elmt => {
         switch (elmt.content_type) {
           case 'video':

@@ -6,6 +6,12 @@ import Formula from './components/Formula'
 import VideoElement from './components/elements/VideoElement'
 import TextElement from './components/elements/TextElement'
 
+const formulaData = {
+  id: 1,
+  title: "Learning React Hooks",
+  is_public: false,
+}
+
 const formulaOneElements = [
   {
   id: 1,
@@ -41,7 +47,7 @@ const formulaOneElements = [
 const App = () => {
   return (
     <Fragment>
-      <Formula elements={formulaOneElements}/>
+      <Formula formula={formulaData} elements={formulaOneElements}/>
     </Fragment>
   );
 }

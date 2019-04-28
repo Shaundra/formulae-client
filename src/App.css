@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.formula-box {
+  padding: 4rem 2rem;
+
+}
+
+.formula-head {
+  display: grid;
+}
+
 .video-container {
   position: relative;
   padding-bottom: 56.25%; /* 16:9*/
@@ -18,17 +27,24 @@
 }
 
 .element-box {
-  height: 10em;
-  border-style: dotted;
+  /* height: 10em; */
+  /* border-style: dotted; */
+  padding: 1rem;
+  border: 1px solid #E2E2E2;
+  border-radius: .5rem;
+
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1rem;
 }
 
 img {
-  height: 50%;
+  height: 80%;
   /* width: 80%; */
 }
 
 p {
-  width: 50%;
+  /* width: 50%; */
 }
 
 @keyframes App-logo-spin {

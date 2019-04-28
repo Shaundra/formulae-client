@@ -50,7 +50,6 @@ const VideoElement = (props) => {
           title='video'
         ></iframe>
       </div>
-      <p>This is my lil tag.</p>
       {renderForm()}
       {!showForm &&
         <button onClick={handleFormClick}>Add Note</button>
