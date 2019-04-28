@@ -38,24 +38,26 @@ const VideoElement = (props) => {
     <Fragment>
       <div className='element-box'>
         <h3>{props.elmt.title}</h3>
-        <iframe
-          // className='video-iframe'
-          id='the-frame'
-          src={props.elmt.source_url + videoParams}
-          // src='https://player.vimeo.com/video/151715092'
-          frameBorder='0'
-          style={{border: 'solid 4px #37474F'}}
-          allow='encrypted-media'
-          allowFullScreen
-          title='video'
-        ></iframe>
-      </div>
+        <div className='iframe-box'>
+          <iframe
+            // className='video-iframe'
+            id='the-frame'
+            src={props.elmt.source_url + videoParams}
+            // src='https://player.vimeo.com/video/151715092'
+            frameBorder='0'
+            style={{border: 'solid 4px #37474F'}}
+            allow='encrypted-media'
+            allowFullScreen
+            title='video'
+          ></iframe>
+        </div>
       {renderForm()}
       {!showForm &&
         <button onClick={handleFormClick}>Add Note</button>
       }
       {/* if showForm, showForm and hide Add Note button */}
       {/* iterate through notes for this element (from api) and render a Note for each */}
+    </div>
     </Fragment>
   )
 }

@@ -26,19 +26,21 @@ const Formula = (props) => {
       <div className='formula-head'>
         <h2>{props.formula.title}</h2>
       </div>
-      {props.elements.map( elmt => {
-        switch (elmt.content_type) {
-          case 'video':
-            return <VideoElement key={elmt.id} elmt={elmt}/>
-            break
-          case 'text':
-            return <TextElement key={elmt.id} elmt={elmt}/>
-            break
-          case 'image':
-            return <ImageElement key={elmt.id} elmt={elmt}/>
-            break
-        }
-      })}
+      <div className='elements'>
+        {props.elements.map( elmt => {
+          switch (elmt.content_type) {
+            case 'video':
+              return <VideoElement key={elmt.id} elmt={elmt}/>
+              break
+            case 'text':
+              return <TextElement key={elmt.id} elmt={elmt}/>
+              break
+            case 'image':
+              return <ImageElement key={elmt.id} elmt={elmt}/>
+              break
+          }
+        })}
+      </div>
     </div>
   )
 }
