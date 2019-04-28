@@ -42,8 +42,6 @@ const App = () => {
   return (
     <Fragment>
       <Formula elements={formulaOneElements}/>
-      {/* <VideoElement /> */}
-      {/* <TextElement example={textElementOne}/> */}
     </Fragment>
   );
 }
