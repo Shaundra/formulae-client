@@ -8,6 +8,7 @@ const Form = (props) => {
 
   let handleTimeButton = () => {
     setShowTime(!showTime)
+    // Does the above need to be setShowTime(showTime => !showTime)?
   }
 
   let renderTimeInput = () => {
