@@ -3,7 +3,7 @@ import { API_ROOT, HEADERS } from '../constants';
 
 // a NoteForm needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
-const Form = (props) => {
+const NoteForm = (props) => {
   const [showTime, setShowTime] = useState(false)
 
   let handleTimeButton = () => {
@@ -28,9 +28,34 @@ const Form = (props) => {
     }
   }
 
-  let submitForm = (ev) => {
+  const postFormData = (body) => {
+    fetch(`${API_ROOT}/notes`, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(body)
+    })
+      .then(response => response.json())
+      .then(console.log)
+  }
+
+  const submitForm = (ev) => {
     ev.preventDefault()
-    // POST note to API
+    ev.persist()
+
+    // console.log(ev, ev.target.noteContent.value, props.contentType, props.parentID, (ev.target.timePosition.value || ''))
+
+    const seekToTime = ev.target.timePosition ? ev.target.timePosition.value : null
+
+    const body = {
+      content: ev.target.noteContent.value,
+      seek_to_time: seekToTime,
+      notable_type: props.contentType,
+      notable_id: props.parentID
+    }
+
+    console.log(body)
+
+    postFormData(body)
   }
 
   // make form inputs controlled
@@ -40,7 +65,7 @@ const Form = (props) => {
 
   return (
     <form onSubmit={submitForm}>
-      {/* only render this button if Note on video Element and TimeInput not visible */}
+      {/* only render this button if NoteForm on video Element and TimeInput not visible */}
       {props.contentType === 'video'
         && !showTime
         && <button onClick={handleTimeButton}>Add Seek-to Time</button>
@@ -48,11 +73,11 @@ const Form = (props) => {
       {renderTimeInput()}
       <label>
         Note:
-        <textarea name='content' />
+        <textarea name='noteContent' />
       </label>
       <input type='submit' value='Save' />
     </form>
   )
 }
 //
-export default Form
+export default NoteForm

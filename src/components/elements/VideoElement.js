@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { YTAPILoaded } from '../../constants';
 // import Note from './Note'
-import Form from '../Form'
+import NoteForm from '../NoteForm'
 
 const VideoElement = (props) => {
 
@@ -25,7 +25,7 @@ const VideoElement = (props) => {
   let renderForm = () => {
     if (showForm) {
       return (
-        <Form myprop='this string' contentType={props.elmt.content_type} />
+        <NoteForm parentID={props.elmt.id} contentType={props.elmt.content_type} />
       )
     }
   }

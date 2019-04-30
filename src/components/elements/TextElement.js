@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import Form from '../Form'
+import NoteForm from '../NoteForm'
 
 const TextElement = (props) => {
   const [showForm, setShowForm] = useState(false)
@@ -9,7 +9,7 @@ const TextElement = (props) => {
   const renderForm = () => {
     if (showForm) {
       return (
-        <Form myprop='this string' contentType={props.elmt.content_type}/>
+        <NoteForm parentID={props.elmt.id} contentType={props.elmt.content_type}/>
       )
     }
   }

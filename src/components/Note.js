@@ -7,13 +7,29 @@ const Note = (props) => {
   // if (props.elementType === 'video') && props.note.seekToTime then render seekToTime
   // what will a Note obj returned from api look like?
 
-// handle clicking on timestamp, need player passed down from Element
-// let handleClick = (player, seekToTime) => {
-//   console.log('link', player)
-//   player.seekTo(65)
-// }
+  // handle clicking on timestamp, need player passed down from Element
+  // let handleClick = (player, seekToTime) => {
+  //   console.log('link', player)
+  //   player.seekTo(65)
+  // }
 
+  const renderFormulaNote = (props) => {
+    return (
+      <Fragment>
+        <p>{props.note.content}</p>
+        <p>{props.note.created_at}</p>
+      </Fragment>
+    )
+  }
 
+  const renderElementNote = (props) => {
+    return (
+      <Fragment>
+        <p>{props.note.content}</p>
+        <p>{props.note.created_at}</p>
+      </Fragment>
+    )
+  }
   //   <Fragment>
   //     <a
   //       href='#!'
@@ -29,9 +45,13 @@ const Note = (props) => {
     //   <p>{props.note.content}</p>
     //   <p>{props.note.updated_at}</p>
     // </div>
-    <p></p>
+    <Fragment>
+      {props.note.notable_type === 'Formula' && renderFormulaNote(props)}
+      {props.note.notable_type === 'Element' && renderElementNote(props)}
+    </Fragment>
   )
 }
+
 
 export default Note
 // t.string "notable_type"

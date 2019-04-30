@@ -9,6 +9,9 @@
 
 .formula-head {
   display: grid;
+  padding: 1rem;
+  border: 10px solid #E2E2E2;
+  border-radius: .5rem;
 }
 
 .elements {

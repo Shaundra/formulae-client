@@ -52,6 +52,7 @@ const App = () => {
 
   // try this w useEffect / hooks
   useEffect( () => {
+    // update to fetch current user
     fetch(API_ROOT + '/users/1')
       .then(response => response.json())
       .then(json => {
@@ -102,23 +103,3 @@ const App = () => {
 }
 
 export default App;
-
-// useEffect(async () => {
-//     const result = await axios(
-//       'http://hn.algolia.com/api/v1/search?query=redux',
-//     );
-//
-//     setData(result.data);
-//   }, []);
-//
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const result = await axios(
-//         'http://hn.algolia.com/api/v1/search?query=redux',
-//       );
-//
-//       setData(result.data);
-//     };
-//
-//     fetchData();
-//   }, []);
