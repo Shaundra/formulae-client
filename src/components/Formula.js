@@ -9,16 +9,20 @@ import NoteForm from './NoteForm'
 const Formula = (props) => {
   const [showForm, setShowForm] = useState(false)
 
+  const handleFormClick = () => {
+    setShowForm(!showForm)
+  }
+
   const renderForm = () => {
     if (showForm) {
       return (
-        <NoteForm parentID={props.formula.id} contentType='Formula'/>
+        <NoteForm
+          parentID={props.formula.id}
+          contentType='Formula'
+          hideForm={handleFormClick}
+        />
       )
     }
-  }
-
-  const handleFormClick = () => {
-    setShowForm(!showForm)
   }
 
   return (

@@ -2,6 +2,7 @@ import React, { Component, Fragment, useState, useEffect } from 'react';
 import { YTAPILoaded } from '../../constants';
 // import Note from './Note'
 import NoteForm from '../NoteForm'
+import Note from '../Note'
 
 const VideoElement = (props) => {
 
@@ -25,7 +26,11 @@ const VideoElement = (props) => {
   let renderForm = () => {
     if (showForm) {
       return (
-        <NoteForm parentID={props.elmt.id} contentType={props.elmt.content_type} />
+        <NoteForm
+          parentID={props.elmt.id}
+          contentType={props.elmt.content_type}
+          hideForm={handleFormClick}
+        />
       )
     }
   }
@@ -51,13 +56,18 @@ const VideoElement = (props) => {
             title='video'
           ></iframe>
         </div>
-      {renderForm()}
-      {!showForm &&
-        <button onClick={handleFormClick}>Add Note</button>
-      }
-      {/* if showForm, showForm and hide Add Note button */}
-      {/* iterate through notes for this element (from api) and render a Note for each */}
-    </div>
+        {renderForm()}
+        {!showForm &&
+          <button onClick={handleFormClick}>Add Note</button>
+        }
+        {/* if showForm, showForm and hide Add Note button */}
+        {/* iterate through notes for this element (from api) and render a Note for each */}
+      </div>
+      <div className='note-box'>
+        {props.elmt.notes.map( note => (
+          <Note key={note.id} note={note} />
+        ))}
+      </div>
     </Fragment>
   )
 }

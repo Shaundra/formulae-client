@@ -35,7 +35,7 @@ const NoteForm = (props) => {
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(console.log)
+      .then(props.hideForm())
   }
 
   const submitForm = (ev) => {

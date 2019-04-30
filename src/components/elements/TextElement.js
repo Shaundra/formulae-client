@@ -1,5 +1,6 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import NoteForm from '../NoteForm'
+import Note from '../Note'
 
 const TextElement = (props) => {
   const [showForm, setShowForm] = useState(false)
@@ -9,7 +10,11 @@ const TextElement = (props) => {
   const renderForm = () => {
     if (showForm) {
       return (
-        <NoteForm parentID={props.elmt.id} contentType={props.elmt.content_type}/>
+        <NoteForm
+          parentID={props.elmt.id}
+          contentType={props.elmt.content_type}
+          hideForm={handleFormClick}
+        />
       )
     }
   }
@@ -27,6 +32,11 @@ const TextElement = (props) => {
       {!showForm &&
         <button onClick={handleFormClick}>Add Note</button>
       }
+      <div className='note-box'>
+        {props.elmt.notes.map( note => (
+          <Note key={note.id} note={note} />
+        ))}
+      </div>
     </div>
   )
 }
