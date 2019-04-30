@@ -4,6 +4,7 @@ import Note from '../Note'
 
 const TextElement = (props) => {
   const [showForm, setShowForm] = useState(false)
+  const [allNotes, setAllNotes] = useState(props.elmt.notes)
 
   // define useEffect function for loading Notes
 
@@ -14,6 +15,8 @@ const TextElement = (props) => {
           parentID={props.elmt.id}
           contentType={props.elmt.content_type}
           hideForm={handleFormClick}
+          allNotes={allNotes}
+          addNote={setAllNotes}
         />
       )
     }
@@ -33,7 +36,8 @@ const TextElement = (props) => {
         <button onClick={handleFormClick}>Add Note</button>
       }
       <div className='note-box'>
-        {props.elmt.notes.map( note => (
+        {/* {props.elmt.notes.map( note => ( */}
+        {allNotes.map( note => (
           <Note key={note.id} note={note} />
         ))}
       </div>

@@ -35,7 +35,11 @@ const NoteForm = (props) => {
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(props.hideForm())
+      .then((newNote) => {
+        props.hideForm()
+        props.addNote([newNote, ...props.allNotes])
+        console.log(newNote)
+      })
   }
 
   const submitForm = (ev) => {
@@ -76,6 +80,8 @@ const NoteForm = (props) => {
         <textarea name='noteContent' />
       </label>
       <input type='submit' value='Save' />
+      {/* style this button to be an x, or rename 'Discard' */}
+      <button onClick={props.hideForm}>Close</button>
     </form>
   )
 }

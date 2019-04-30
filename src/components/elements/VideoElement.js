@@ -5,9 +5,9 @@ import NoteForm from '../NoteForm'
 import Note from '../Note'
 
 const VideoElement = (props) => {
-
   const [player, setPlayer] = useState()
   const [showForm, setShowForm] = useState(false)
+  const [allNotes, setAllNotes] = useState(props.elmt.notes)
   const videoParams = '?modestbranding=1&enablejsapi=1'
 
   useEffect(() => {
@@ -17,25 +17,28 @@ const VideoElement = (props) => {
         firstScript.parentNode.insertBefore(tag, firstScript);
   }, [player])
 
-  if (!player) {YTAPILoaded.then(YT => {
+  if (!player) {
+    YTAPILoaded.then(YT => {
     setPlayer(new YT.Player('the-frame', {}))
 
     console.log('in apiloaded', player)
   })}
 
-  let renderForm = () => {
+  const renderForm = () => {
     if (showForm) {
       return (
         <NoteForm
           parentID={props.elmt.id}
           contentType={props.elmt.content_type}
           hideForm={handleFormClick}
+          allNotes={allNotes}
+          addNote={setAllNotes}
         />
       )
     }
   }
 
-  let handleFormClick = () => {
+  const handleFormClick = () => {
     setShowForm(!showForm)
   }
 
@@ -62,11 +65,12 @@ const VideoElement = (props) => {
         }
         {/* if showForm, showForm and hide Add Note button */}
         {/* iterate through notes for this element (from api) and render a Note for each */}
-      </div>
-      <div className='note-box'>
-        {props.elmt.notes.map( note => (
-          <Note key={note.id} note={note} />
-        ))}
+        <div className='note-box'>
+          {/* {props.elmt.notes.map( note => ( */}
+          {allNotes.map( note => (
+            <Note key={note.id} note={note} />
+          ))}
+        </div>
       </div>
     </Fragment>
   )

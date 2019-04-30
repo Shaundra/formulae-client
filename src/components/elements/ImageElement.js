@@ -4,8 +4,9 @@ import Note from '../Note'
 
 const ImageElement = (props) => {
   const [showForm, setShowForm] = useState(false)
-
-  // define useEffect function for loading Notes
+  const [allNotes, setAllNotes] = useState(props.elmt.notes)
+  // define useEffect function for loading Notes?
+  // combine above state into a useReducer
 
   const renderForm = () => {
     if (showForm) {
@@ -14,6 +15,8 @@ const ImageElement = (props) => {
           parentID={props.elmt.id}
           contentType={props.elmt.content_type}
           hideForm={handleFormClick}
+          allNotes={allNotes}
+          addNote={setAllNotes}
         />
       )
     }
@@ -33,7 +36,8 @@ const ImageElement = (props) => {
         <button onClick={handleFormClick}>Add Note</button>
       }
       <div className='note-box'>
-        {props.elmt.notes.map( note => (
+        {/* {props.elmt.notes.map( note => ( */}
+        {allNotes.map( note => (
           <Note key={note.id} note={note} />
         ))}
       </div>

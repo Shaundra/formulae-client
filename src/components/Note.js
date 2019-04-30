@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { API_ROOT, HEADERS } from '../constants';
+import { API_ROOT, HEADERS, formatDate } from '../constants';
 
 // a Note needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
@@ -17,7 +17,7 @@ const Note = (props) => {
     return (
       <Fragment>
         <p>{props.note.content}</p>
-        <p>{props.note.created_at}</p>
+        <p>{formatDate(props.note.created_at)}</p>
       </Fragment>
     )
   }
@@ -25,8 +25,9 @@ const Note = (props) => {
   const renderElementNote = (props) => {
     return (
       <Fragment>
+        {props.note.seek_to_time ? <span>{props.note.seek_to_time}</span> : null}
         <p>{props.note.content}</p>
-        <p>{props.note.created_at}</p>
+        <p>{formatDate(props.note.created_at)}</p>
       </Fragment>
     )
   }
