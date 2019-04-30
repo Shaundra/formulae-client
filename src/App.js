@@ -7,6 +7,7 @@ import Formula from './components/Formula'
 import VideoElement from './components/elements/VideoElement'
 import TextElement from './components/elements/TextElement'
 import { API_ROOT, HEADERS } from './constants';
+import FormulaForm from './components/FormulaForm'
 
 // const formulaData = {
 //   id: 1,
@@ -14,41 +15,10 @@ import { API_ROOT, HEADERS } from './constants';
 //   is_public: false,
 // }
 
-const formulaOneElements = [
-  {
-  id: 1,
-  title: "Intro to React Hooks",
-  position: 0,
-  is_public: null,
-  source_url: "https://www.youtube.com/embed/mxK8b99iJTg",
-  location_path: null,
-  content_type: "video",
-  content: null
-  },
-  {
-  id: 2,
-  title: "What are Hooks?",
-  position: 1,
-  is_public: null,
-  source_url: "https://pbs.twimg.com/media/DyubqDoWwAAyanN.jpg",
-  location_path: null,
-  content_type: "image",
-  content: null
-  },
-  {
-  id: 3,
-  title: "Rules of Hooks",
-  position: 2,
-  is_public: null,
-  source_url: null,
-  location_path: null,
-  content_type: "text",
-  content: "Two Rules of Hooks: Only Call Hooks at the Top Level, Only Call Hooks from React Functions"
-}]
-
 const App = () => {
   // switch useState to useReducer
-  const [formulaData, setFormulaData] = useState({ formulas: [] })
+  const [formulaData, setFormulaData] = useState([])
+  // const [formulaData, setFormulaData] = useState({formulas: []})
 
   // try this w useEffect / hooks
   useEffect( () => {
@@ -56,9 +26,10 @@ const App = () => {
     fetch(API_ROOT + '/users/1')
       .then(response => response.json())
       .then(json => {
-        console.log(json)
-        console.log(json.formulas[0])
-        setFormulaData(json)
+        // console.log(json)
+        // console.log(json.formulas[0])
+        setFormulaData(json.formulas)
+        // setFormulaData(json)
       })
   }, [])
 
@@ -75,19 +46,29 @@ const App = () => {
 
   return (
     <Fragment>
+      {console.log('in render', formulaData)}
       <Router>
+        <Route
+          exact path='/formulaform'
+          render={(props) => (
+            <FormulaForm
+            />
+          )}
+        />
         <Route
           exact path='/formulae'
           render={(props) => (
             <FormulaePage
-              formulae={formulaData.formulas}
-              testHistory={props.history}
+              formulae={formulaData}
+              // formulae={formulaData.formulas}
+              browseHistory={props.history}
             />
           )}
         />
         {/* figure out why using this function doesn't give me any data*/}
         {/* {defFormulaRoutes()} */}
-        {formulaData.formulas.map(formula => (
+        {/* {formulaData.formulas.map(formula => ( */}
+        {formulaData.map(formula => (
           <Route
             exact path={`/formula/${formula.id}`}
             key={formula.id}
