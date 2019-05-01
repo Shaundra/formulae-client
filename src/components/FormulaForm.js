@@ -1,11 +1,11 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { API_ROOT, HEADERS } from '../constants';
+import { API_ROOT, HEADERS, AUTH_HEADERS } from '../constants';
 
 const FormulaForm = (props) => {
   const postFormData = (body) => {
     fetch(`${API_ROOT}/formulas`, {
       method: 'POST',
-      headers: HEADERS,
+      headers: AUTH_HEADERS,
       body: JSON.stringify(body)
     })
       .then(response => response.json())

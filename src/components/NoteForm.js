@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { API_ROOT, HEADERS } from '../constants';
+import { API_ROOT, HEADERS, AUTH_HEADERS } from '../constants';
 
 // a NoteForm needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
@@ -31,12 +31,12 @@ const NoteForm = (props) => {
   const postFormData = (body) => {
     fetch(`${API_ROOT}/notes`, {
       method: 'POST',
-      headers: HEADERS,
+      headers: AUTH_HEADERS,
       body: JSON.stringify(body)
     })
       .then(response => response.json())
       .then((newNote) => {
-        props.hideForm()
+        props.hideForm('showNoteForm')
         props.addNote([newNote, ...props.allNotes])
         console.log(newNote)
       })
@@ -45,6 +45,7 @@ const NoteForm = (props) => {
   const submitForm = (ev) => {
     ev.preventDefault()
     ev.persist()
+    console.log('event from submitForm', ev)
 
     // console.log(ev, ev.target.noteContent.value, props.contentType, props.parentID, (ev.target.timePosition.value || ''))
 
@@ -81,7 +82,7 @@ const NoteForm = (props) => {
       </label>
       <input type='submit' value='Save' />
       {/* style this button to be an x, or rename 'Discard' */}
-      <button onClick={props.hideForm}>Close</button>
+      <button name='showNoteForm' onClick={props.hideForm}>Close</button>
     </form>
   )
 }

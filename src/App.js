@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import FormulaePage from './containers/FormulaePage'
@@ -8,30 +7,38 @@ import VideoElement from './components/elements/VideoElement'
 import TextElement from './components/elements/TextElement'
 import { API_ROOT, HEADERS } from './constants';
 import FormulaForm from './components/FormulaForm'
+import UserForm from './containers/UserForm'
+import HomePage from './containers/HomePage'
 
-// const formulaData = {
-//   id: 1,
-//   title: "Learning React Hooks",
-//   is_public: false,
-// }
 
 const App = () => {
   // switch useState to useReducer
-  const [formulaData, setFormulaData] = useState([])
   // const [formulaData, setFormulaData] = useState({formulas: []})
+  const [userData, setUserData] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const [formulaData, setFormulaData] = useState([])
 
   // try this w useEffect / hooks
-  useEffect( () => {
-    // update to fetch current user
-    fetch(API_ROOT + '/users/1')
-      .then(response => response.json())
-      .then(json => {
-        // console.log(json)
-        // console.log(json.formulas[0])
-        setFormulaData(json.formulas)
-        // setFormulaData(json)
-      })
-  }, [])
+  // grabbing data from login instead now
+  // useEffect( () => {
+  //   // update to fetch current user
+  //   // const userId = userData.user.id ? userData.user.id : null
+  //   fetch(API_ROOT + '/users/1', {
+  //   // fetch(API_ROOT + `/users/${userId}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem('userToken')}`
+  //     }
+  //   })
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       // console.log(json)
+  //       // console.log(json.formulas[0])
+  //       setFormulaData(json.formulas)
+  //       // setFormulaData(json)
+  //     })
+  // }, [userData])
 
   // const defFormulaRoutes = () => {
   //   formulaData.formulas.map(formula => (
@@ -44,10 +51,68 @@ const App = () => {
   //   ))
   // }
 
+  const getData = () => {
+    if (isLoggedIn) {
+      fetch(API_ROOT + '/users/1', {
+        // fetch(API_ROOT + `/users/${userId}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        }
+      })
+      .then(response => response.json())
+      .then(json => {
+        // console.log(json)
+        // console.log(json.formulas[0])
+        setFormulaData(json.formulas)
+        // setFormulaData(json)
+      })
+    }
+  }
+
   return (
     <Fragment>
-      {console.log('in render', formulaData)}
+      {/* {console.log('in render', formulaData)} */}
       <Router>
+        <Route
+          exact path='/home'
+          render={(props) => (
+            <HomePage
+              setLogin={setIsLoggedIn}
+              isLoggedIn={isLoggedIn}
+              browseHistory={props.history}
+              setUser={setUserData}
+              userData={userData}
+              setFormulae={setFormulaData}
+            />
+          )}
+        />
+        {/* <Route
+          exact path='/login'
+          render={(props) => (
+            <UserForm
+              formRoute='login'
+              setUser={setUserData}
+              userData={userData}
+              setFormulae={setFormulaData}
+              setLogin={setIsLoggedIn}
+              browseHistory={props.history}
+            />
+          )}
+        /> */}
+        {/* <Route
+          exact path='/'
+          render={(props) => (
+            <UserForm
+              formRoute='users'
+              setUser={setUserData}
+              userData={userData}
+              setFormulae={setFormulaData}
+              setLogin={setIsLoggedIn}
+              browseHistory={props.history}
+            />
+          )}
+        /> */}
         <Route
           exact path='/formulaform'
           render={(props) => (
@@ -68,7 +133,7 @@ const App = () => {
         {/* figure out why using this function doesn't give me any data*/}
         {/* {defFormulaRoutes()} */}
         {/* {formulaData.formulas.map(formula => ( */}
-        {formulaData.map(formula => (
+        {isLoggedIn && formulaData.map(formula => (
           <Route
             exact path={`/formula/${formula.id}`}
             key={formula.id}
@@ -77,7 +142,7 @@ const App = () => {
             )}
           />
         ))}
-        <Route exact path='/browse' />
+        {/* <Route exact path='/browse' /> */}
       </Router>
     </Fragment>
   );
