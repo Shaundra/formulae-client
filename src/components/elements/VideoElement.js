@@ -34,6 +34,7 @@ const VideoElement = (props) => {
           hideForm={handleFormClick}
           allNotes={allNotes}
           addNote={setAllNotes}
+          player={player}
         />
       )
     }
@@ -93,7 +94,7 @@ const VideoElement = (props) => {
         <div className='note-box'>
           {/* {props.elmt.notes.map( note => ( */}
           {allNotes.map( note => (
-            <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
+            <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} player={player} />
           ))}
         </div>
       </div>

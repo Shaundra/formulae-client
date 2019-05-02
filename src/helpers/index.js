@@ -30,3 +30,15 @@ export const fetchJWT = ({url, method='GET', reqBody={}, jwt=''}) => {
   // console.log("HTTPR", url, init)
   return fetch( url, init);
 }
+
+export const formatVidTime = (seconds) => {
+  seconds = parseInt(seconds)
+
+  let min = Math.floor(seconds / 60).toString()
+  min = min.length > 1 ?  min : `0${min}`
+
+  let remSec = (seconds % 60).toString()
+  remSec = remSec.length > 1 ?  remSec : `0${remSec}`
+
+  return `${min}:${remSec}`
+}

@@ -6,24 +6,29 @@ import { API_ROOT, HEADERS, AUTH_HEADERS } from '../constants';
 const NoteForm = (props) => {
   const [showTime, setShowTime] = useState(false)
 
-  let handleTimeButton = () => {
+  const handleTimeButton = () => {
     setShowTime(!showTime)
     // Does the above need to be setShowTime(showTime => !showTime)?
   }
 
-  let renderTimeInput = () => {
+  const renderTimeInput = () => {
     if (showTime) {
       return (
-        <label>
-          Timestamp for Note:
-          <input
-            type="text"
-            name="timePosition"
-            placeholder="mm:ss"
-            // value={timeFormVal}
-            // onChange={handleChange}
-          />
-        </label>
+        <Fragment>
+          <label>
+            Timestamp for Note:
+            <input
+              type="text"
+              name="timePosition"
+              placeholder="mm:ss"
+              // value={timeFormVal}
+              // onChange={handleChange}
+            />
+          </label>
+          <label> Use Video Current Time?
+            <input name='currentTime' type='checkbox'/>
+          </label>
+        </Fragment>
       )
     }
   }
@@ -42,14 +47,20 @@ const NoteForm = (props) => {
       })
   }
 
+  const getSeekToTime = (ev) => {
+    if (ev.target.currentTime.checked) {
+      return Math.floor(props.player.getCurrentTime())
+    } else if (ev.target.timePosition) {
+      return ev.target.timePosition.value
+    } else {
+      return null
+    }
+  }
+
   const submitForm = (ev) => {
     ev.preventDefault()
-    ev.persist()
-    console.log('event from submitForm', ev)
 
-    // console.log(ev, ev.target.noteContent.value, props.contentType, props.parentID, (ev.target.timePosition.value || ''))
-
-    const seekToTime = ev.target.timePosition ? ev.target.timePosition.value : null
+    const seekToTime = getSeekToTime(ev)
 
     const body = {
       content: ev.target.noteContent.value,
@@ -57,8 +68,6 @@ const NoteForm = (props) => {
       notable_type: props.contentType,
       notable_id: props.parentID
     }
-
-    console.log(body)
 
     postFormData(body)
   }

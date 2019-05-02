@@ -41,6 +41,12 @@
    width: 100%;
 }
 
+.note-box {
+  max-height: 16em;
+  overflow: auto;
+  border-style: groove; 
+}
+
 img {
   height: auto;
   width: 90%;

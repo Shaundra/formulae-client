@@ -1,6 +1,6 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
-import { formatDate, fetchJWT } from '../helpers'
+import { formatDate, fetchJWT, formatVidTime } from '../helpers'
 
 // a Note needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
@@ -9,10 +9,11 @@ const Note = (props) => {
   // what will a Note obj returned from api look like?
 
   // handle clicking on timestamp, need player passed down from Element
-  // let handleClick = (player, seekToTime) => {
-  //   console.log('link', player)
-  //   player.seekTo(65)
-  // }
+  const handleTimeClick = () => {
+    if (props.player) {
+      props.player.seekTo(props.note.seek_to_time)
+    }
+  }
 
   const renderFormulaNote = (props) => {
     return (
@@ -26,8 +27,14 @@ const Note = (props) => {
   const renderElementNote = (props) => {
     return (
       <Fragment>
-        {props.note.seek_to_time ? <span>{props.note.seek_to_time}</span> : null}
-        <p>{props.note.content}</p>
+        <p>
+          {props.note.seek_to_time
+            ?
+            <a href='#!' onClick={handleTimeClick}><span>{formatVidTime(props.note.seek_to_time)}</span></a>
+            : null
+          }
+          {props.note.content}
+        </p>
         <p>{formatDate(props.note.created_at)}</p>
       </Fragment>
     )
