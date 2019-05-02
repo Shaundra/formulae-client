@@ -1,5 +1,6 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { API_ROOT, HEADERS, formatDate } from '../constants';
+import { API_ROOT, HEADERS } from '../constants';
+import { formatDate } from '../helpers'
 
 // a Note needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
