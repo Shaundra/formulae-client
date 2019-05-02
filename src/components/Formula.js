@@ -75,7 +75,7 @@ const Formula = (props) => {
         {/* Add formula notes here */}
         {/* {props.formula.notes.map( note => ( */}
         {allNotes.map( note => (
-          <Note key={note.id} note={note}/>
+          <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
         ))}
         {/* Add addNote form here */}
         {renderForm()}
@@ -91,13 +91,28 @@ const Formula = (props) => {
         {/* {props.formula.elements.map( elmt => { */}
           switch (elmt.content_type) {
             case 'video':
-              return <VideoElement key={elmt.id} elmt={elmt}/>
+              return <VideoElement
+                key={elmt.id}
+                elmt={elmt}
+                allElements={allElements}
+                setAllElements={setAllElements}
+              />
               break
             case 'text':
-              return <TextElement key={elmt.id} elmt={elmt}/>
+              return <TextElement
+                key={elmt.id}
+                elmt={elmt}
+                allElements={allElements}
+                setAllElements={setAllElements}
+              />
               break
             case 'image':
-              return <ImageElement key={elmt.id} elmt={elmt}/>
+              return <ImageElement
+                key={elmt.id}
+                elmt={elmt}
+                allElements={allElements}
+                setAllElements={setAllElements}
+              />
               break
           }
         })}

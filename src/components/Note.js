@@ -1,6 +1,6 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
-import { formatDate } from '../helpers'
+import { formatDate, fetchJWT } from '../helpers'
 
 // a Note needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
@@ -41,6 +41,21 @@ const Note = (props) => {
   //     </a>
   //     <span>This is my annotation</span>
   //   </Fragment>
+  const handleElementState = (ev) => {
+    const noteID = props.note.id
+    const url = `${API_ROOT}/notes/${noteID}`
+    const method = 'DELETE'
+    const jwt = JSON.parse(localStorage.getItem('user')).userToken
+
+    fetchJWT({url, method, jwt})
+      .then(response => response.json())
+      .then(json => {
+        if (json.status === 200) {
+          const noteSet = props.allNotes.filter(note => note.id !== noteID)
+          props.setAllNotes(noteSet)
+        }
+      })
+  }
 
   return (
     // <div className='note-box' id={props.note.notable_id}>
@@ -48,6 +63,7 @@ const Note = (props) => {
     //   <p>{props.note.updated_at}</p>
     // </div>
     <Fragment>
+      <button name='delete' onClick={handleElementState}>Delete Note</button>
       {props.note.notable_type === 'Formula' && renderFormulaNote(props)}
       {props.note.notable_type === 'Element' && renderElementNote(props)}
     </Fragment>
@@ -56,10 +72,3 @@ const Note = (props) => {
 
 
 export default Note
-// t.string "notable_type"
-// t.bigint "notable_id"
-// t.bigint "user_id"
-// t.text "content"
-// t.datetime "created_at", null: false
-// t.datetime "updated_at", null: false
-// add seekToTime column
