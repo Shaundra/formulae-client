@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import VideoElement from './elements/VideoElement'
 import TextElement from './elements/TextElement'
 import ImageElement from './elements/ImageElement'
+import WebsiteElement from './elements/WebsiteElement'
 import Note from './Note'
 import NoteForm from './NoteForm'
 import ElementForm from './forms/ElementForm'
@@ -114,6 +115,13 @@ const Formula = (props) => {
                 setAllElements={setAllElements}
               />
               break
+            case 'website':
+              return <WebsiteElement
+                key={elmt.id}
+                elmt={elmt}
+                allElements={allElements}
+                setAllElements={setAllElements}
+              />
           }
         })}
       </div>

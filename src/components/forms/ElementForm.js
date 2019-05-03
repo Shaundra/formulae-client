@@ -9,7 +9,7 @@ const ElementForm = (props) => {
   }
 
   const showSubForm = () => {
-    if (elementType === 'Image' || elementType === 'Video') {
+    if (elementType === 'Image' || elementType === 'Video' || elementType === 'Website') {
       return (
         <Fragment>
           <label>Title:
@@ -79,6 +79,7 @@ const ElementForm = (props) => {
             <option value='Video'>Video</option>
             <option value='Image'>Image</option>
             <option value='Text'>Text</option>
+            <option value='Website'>Website</option>
           </select>
         </label>
         {showSubForm()}
