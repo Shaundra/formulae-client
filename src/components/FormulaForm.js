@@ -35,11 +35,11 @@ const FormulaForm = (props) => {
   return (
     <form onSubmit={submitForm}>
       <label>Title:
-        <input type='text' placeholder='Formula Title' name='title'/>
+        <input type='text' placeholder='Formula Title' name='title' required />
       </label>
 
       <label>Description
-        <input type='text' placeholder='Formula Description' name='description' />
+        <input type='text' placeholder='Formula Description' name='description' required />
       </label>
 
       <p>Make this Formula public:</p>

@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import FormulaePage from './containers/FormulaePage'
 import Formula from './components/Formula'
 import VideoElement from './components/elements/VideoElement'
@@ -9,6 +9,7 @@ import { API_ROOT, HEADERS } from './constants';
 import FormulaForm from './components/FormulaForm'
 import UserForm from './containers/UserForm'
 import HomePage from './containers/HomePage'
+import NavBar from './components/NavBar'
 
 
 const App = () => {
@@ -113,6 +114,7 @@ const App = () => {
             />
           )}
         /> */}
+        {isLoggedIn && <NavBar />}
         <Route
           exact path='/formulaform'
           render={(props) => (
@@ -120,6 +122,7 @@ const App = () => {
             />
           )}
         />
+        <div className='main'>
         <Route
           exact path='/formulae'
           render={(props) => (
@@ -132,7 +135,6 @@ const App = () => {
         />
         {/* figure out why using this function doesn't give me any data*/}
         {/* {defFormulaRoutes()} */}
-        {/* {formulaData.formulas.map(formula => ( */}
         {isLoggedIn && formulaData.map(formula => (
           <Route
             exact path={`/formula/${formula.id}`}
@@ -142,7 +144,10 @@ const App = () => {
             )}
           />
         ))}
-        {/* <Route exact path='/browse' /> */}
+        <Route exact path='/browse' />
+        <Route exact path='/search' />
+        <Route exact path='/elements' />
+        </div>
       </Router>
     </Fragment>
   );

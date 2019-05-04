@@ -6,7 +6,7 @@ import WebsiteElement from './elements/WebsiteElement'
 import Note from './Note'
 import NoteForm from './NoteForm'
 import ElementForm from './forms/ElementForm'
-
+import Modal from './Modal'
 
 const Formula = (props) => {
   // const [showForm, setShowForm] = useState(false)
@@ -59,11 +59,21 @@ const Formula = (props) => {
       )
     } else if (showForm.showElementForm) {
       return (
-        <ElementForm
-          parentID={props.formula.id}
-          hideForm={handleFormClick}
-          allElements={allElements}
-          addElement={setAllElements}
+        // <ElementForm
+        //   parentID={props.formula.id}
+        //   hideForm={handleFormClick}
+        //   allElements={allElements}
+        //   addElement={setAllElements}
+        // />
+        <Modal
+          compToRender={        <ElementForm
+                  parentID={props.formula.id}
+                  hideForm={handleFormClick}
+                  allElements={allElements}
+                  addElement={setAllElements}
+                  id='element-form'
+                />}
+          ariaLabelledBy='element-form'
         />
       )
     }
@@ -73,17 +83,20 @@ const Formula = (props) => {
     <div className='formula-box'>
       <div className='formula-head'>
         <h2>{props.formula.title}</h2>
+        <p>{props.formula.description}</p>
         {/* Add formula notes here */}
-        {/* {props.formula.notes.map( note => ( */}
-        {allNotes.map( note => (
-          <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
-        ))}
+        <div className='note-box'>
+          {allNotes.map( note => (
+            <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
+          ))}
+        </div>
         {/* Add addNote form here */}
         {renderForm()}
         {!showForm.showNoteForm &&
           <button name='showNoteForm' onClick={handleFormClick}>Add Note</button>
         }
       </div>
+
       {!showForm.showElementForm &&
         <button name='showElementForm' onClick={handleFormClick}>Add Element</button>
       }

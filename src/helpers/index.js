@@ -42,3 +42,17 @@ export const formatVidTime = (seconds) => {
 
   return `${min}:${remSec}`
 }
+
+export const convertToSeconds = (timeStr) => {
+  const timeStrChars = timeStr.split(':').map(seg => parseInt(seg))
+
+  if (timeStrChars.length === 3) {
+    const seconds = (timeStrChars[0] * 3600) + (timeStrChars[1] * 60) + timeStrChars[2]
+    return seconds
+  } else if (timeStrChars.length === 2) {
+    const seconds = (timeStrChars[0] * 60) + timeStrChars[1]
+    return seconds
+  } else {
+    return timeStrChars[0]
+  }
+}

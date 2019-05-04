@@ -1,5 +1,164 @@
+body {
+
+  /* background-color: rgba(0,0,0,0.4); */
+  background-color: #eae7dc;
+  color: #1D1D1B;
+  /* opacity: 0.5; */
+}
+
 .App {
   text-align: center;
+}
+
+.c-modal-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* This must be at a higher index to the rest of your page content */
+  transform: translateZ(0);
+  background-color: rgba(color(white), 0.05);
+  /* background-color: white; */
+  /* opacity: 10%; */
+}
+
+/* .c-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media screen and (min-width: 500px) {
+    left: 50%;
+    top: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    max-width: 30em;
+    max-height: calc(100% - 1em);
+  }
+} */
+
+
+.c-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* width: 100%; */
+  height: auto;
+  padding: 2.5em 1.5em 1.5em 1.5em;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -50%);
+  /* overflow-y: auto; */
+  /* -webkit-overflow-scrolling: touch; */
+
+  /* @media screen and (min-width: 500px) {
+    left: 50%;
+    top: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    max-width: 30em;
+    max-height: calc(100% - 1em);
+  } */
+}
+
+.c-modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .5em;
+  line-height: 1;
+  background: #f6f6f7;
+  border: 0;
+  box-shadow: 0;
+  cursor: pointer;
+}
+
+.c-modal__close-icon {
+  width: 25px;
+  height: 25px;
+  fill: transparent;
+  stroke: black;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.c-modal__body {
+  padding-top: .25em;
+}
+
+.u-hide-visually {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+.side-nav + .main {
+/* .main { */
+  transition: margin-left .5s;
+  padding: 20px;
+  margin-left: 250px;
+  opacity: .5;
+}
+
+.side-nav {
+  height: 100%;
+  /* width: 0px; */
+  width: 25%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #EAE7DC;
+  /* background-color: white; */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 25px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  border-right-style: solid;
+  border-right-color: #E98074;
+}
+
+.nav-btn {
+  padding: 8px;
+  display: block;
+  margin-bottom: 1rem;
+  margin-left: .5rem;
+  background: transparent;
+  /* background-color: #EAE7DC; */
+  font-weight: bold;
+  width: 85%;
+  border-top-color: #d8d8d8;
+  border-right-color: #d1d1d1;
+  border-bottom-color: #bababa;
+  border-left-color: #d1d1d1;
+}
+
+.nav-btn:hover {
+  /* background-color: #E98074;  */
+  background-color: #D8C3A5;
+  color: #E98074;
+}
+
+#close-menu {
+  background: transparent;
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-style: none;
 }
 
 .formula-box {
@@ -14,6 +173,13 @@
   border-radius: .5rem;
 }
 
+.formula-card {
+  border: 5px solid white;
+  width: 85%;
+  padding: 1rem;
+  margin: 1rem;
+}
+
 .elements {
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -22,7 +188,7 @@
 
 .element-box {
   padding: 1rem;
-  border: 1px solid #E2E2E2;
+  border: 1px solid white;
   border-radius: .5rem;
 }
 
@@ -44,7 +210,7 @@
 .note-box {
   max-height: 16em;
   overflow: auto;
-  border-style: groove; 
+  border-style: groove;
 }
 
 img {
@@ -52,9 +218,6 @@ img {
   width: 90%;
 }
 
-p {
-  /* width: 50%; */
-}
 
 @keyframes App-logo-spin {
   from {

@@ -16,7 +16,7 @@ const ElementForm = (props) => {
             <input type='text' name='title' placeholder='Element Title'/>
           </label>
           <label>Source URL:
-            <input type='text' name='sourceURL' placeholder='Source URL'/>
+            <input type='url' name='sourceURL' placeholder='Source URL' required />
           </label>
         </Fragment>
       )
@@ -24,10 +24,10 @@ const ElementForm = (props) => {
       return (
         <Fragment>
           <label>Title:
-            <input type='text' name='title' placeholder='Element Title'/>
+            <input type='text' name='title' placeholder='Element Title' />
           </label>
           <label>Text Content:
-            <textarea name='textContent'/>
+            <textarea name='textContent' required />
           </label>
       </Fragment>
       )
@@ -67,6 +67,10 @@ const ElementForm = (props) => {
     console.log(body)
     postFormData(body)
   }
+  const onkey = (ev) => {
+    ev.persist()
+    console.log(ev, ev.target, ev.type)
+  }
 
   return (
     <Fragment>
@@ -75,7 +79,8 @@ const ElementForm = (props) => {
       </div>
       <form name='showElementForm' onSubmit={submitForm}>
         <label>Content Type:
-          <select name='contentType' onChange={handleTypeSelect}>
+          <select name='contentType' onChange={handleTypeSelect} required>
+            <option hidden disabled selected value=''></option>
             <option value='Video'>Video</option>
             <option value='Image'>Image</option>
             <option value='Text'>Text</option>
