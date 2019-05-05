@@ -70,7 +70,7 @@ const App = () => {
       })
     }
   }
-
+// history={history}
   return (
     <Fragment>
       {/* {console.log('in render', formulaData)} */}
