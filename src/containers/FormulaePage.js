@@ -47,8 +47,8 @@ const FormulaePage = (props) => {
       {/* {props.formulae.map(formula => { */}
         return (
           <div key={formula.id} className='formula-card'>
-            <h4>Formula: {formula.title}</h4>
-            <p>Description: {formula.description}</p>
+            <h4>{formula.title}</h4>
+            <p>{formula.description}</p>
             <button
               onClick={() => viewFormula(props.browseHistory, formula.id)}
             >
