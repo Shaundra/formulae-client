@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import FormulaePage from './containers/FormulaePage'
 import Formula from './components/Formula'
 import VideoElement from './components/elements/VideoElement'
@@ -77,16 +77,24 @@ const App = () => {
       <Router>
         <Route
           exact path='/home'
-          render={(props) => (
-            <HomePage
-              setLogin={setIsLoggedIn}
-              isLoggedIn={isLoggedIn}
-              browseHistory={props.history}
-              setUser={setUserData}
-              userData={userData}
-              setFormulae={setFormulaData}
-            />
-          )}
+          render={(props) => {
+            if (isLoggedIn) {
+              return (
+                <Redirect to='/formulae'/>
+              )
+            } else {
+              return (
+                <HomePage
+                  setLogin={setIsLoggedIn}
+                  isLoggedIn={isLoggedIn}
+                  browseHistory={props.history}
+                  setUser={setUserData}
+                  userData={userData}
+                  setFormulae={setFormulaData}
+                />
+              )
+            }
+          }}
         />
         {/* <Route
           exact path='/login'
