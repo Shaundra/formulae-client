@@ -43,17 +43,23 @@ const FormulaePage = (props) => {
       {!showForm &&
         <button onClick={handleFormClick}>Create New Formula</button>
       }
+      <h4 className='formulae-count'><strong>{allFormulae.length}</strong> formulae</h4>
       {allFormulae.map(formula => {
       {/* {props.formulae.map(formula => { */}
         return (
           <div key={formula.id} className='formula-card'>
-            <h4>{formula.title}</h4>
-            <p>{formula.description}</p>
             <button
+              className='formula-card--link'
+              onClick={() => viewFormula(props.browseHistory, formula.id)}
+            >
+              <h4>{formula.title}</h4>
+              <p>{formula.description}</p>
+            </button>
+            {/* <button
               onClick={() => viewFormula(props.browseHistory, formula.id)}
             >
               View
-            </button>
+            </button> */}
           </div>
         )
       })}

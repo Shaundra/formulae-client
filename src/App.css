@@ -193,11 +193,36 @@ body {
   border-radius: .5rem;
 }
 
+.formula-card:before {
+  content: ' ';
+  display: block;;
+  position:absolute;
+  top: 0;
+  background-color: #ddd;
+  height: 1px;
+  left: 1.25vw;
+  right: 1.25vw;
+  box-sizing: border-box;
+}
+
 .formula-card {
   border: 5px solid white;
   width: 85%;
   padding: 1rem;
   margin: 1rem;
+  position: relative;
+}
+
+.formula-card--link {
+  color: #000;
+  text-decoration: none;
+  border: none;
+  text-align: left;
+}
+
+.formula-card--link:hover h4, .formula-card--link:hover p{
+  box-shadow: inset 0 -.3rem #E98074;
+  background-color: #D8C3A5;
 }
 
 .formula-card h4 {
@@ -210,6 +235,18 @@ body {
 .formula-card p {
   font-family: 'Proza Libre', sans-serif;
   font-weight: 300;
+  font-size: 1rem;
+}
+
+.formulae-count {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: normal;
+  padding-left: 2rem;
+  color: #757575;
+}
+
+.formulae-count strong {
+  color: black;
   font-size: 1rem;
 }
 
