@@ -115,10 +115,8 @@ const NoteForm = (props) => {
         && <button onClick={handleTimeButton}>Add Seek-to Time</button>
       }
       {renderTimeInput()}
-      <label>
-        Note:
-        <textarea name='noteContent' required />
-      </label>
+      <label htmlFor='noteContent'>Note:</label>
+      <textarea name='noteContent' required />
       <input type='submit' value='Save' />
       {/* style this button to be an x, or rename 'Discard' */}
       <button name='showNoteForm' onClick={props.hideForm}>Close</button>

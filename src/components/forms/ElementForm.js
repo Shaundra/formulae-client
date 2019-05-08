@@ -12,23 +12,19 @@ const ElementForm = (props) => {
     if (elementType === 'Image' || elementType === 'Video' || elementType === 'Website') {
       return (
         <Fragment>
-          <label>Title:
-            <input type='text' name='title' placeholder='Element Title'/>
-          </label>
-          <label>Source URL:
-            <input type='url' name='sourceURL' placeholder='Source URL' required />
-          </label>
+          <label htmlFor='title'>Title:</label>
+          <input type='text' name='title' placeholder='Element Title'/>
+          <label htmlFor='sourceURL'>Source URL:</label>
+          <input type='url' name='sourceURL' placeholder='Source URL' required />
         </Fragment>
       )
     } else if (elementType === 'Text') {
       return (
         <Fragment>
-          <label>Title:
-            <input type='text' name='title' placeholder='Element Title' />
-          </label>
-          <label>Text Content:
-            <textarea name='textContent' required />
-          </label>
+          <label htmlFor='title'>Title:</label>
+          <input type='text' name='title' placeholder='Element Title' />
+          <label htmlFor='textContent'>Text Content:</label>
+          <textarea name='textContent' required />
       </Fragment>
       )
     }
@@ -74,31 +70,34 @@ const ElementForm = (props) => {
 
   return (
     <Fragment>
-      <div>
-        I am an Element Form
+      <div className='form-header'>
+        Add a New Element
       </div>
       <form name='showElementForm' onSubmit={submitForm}>
-        <label>Content Type:
-          <select name='contentType' onChange={handleTypeSelect} required>
-            <option hidden disabled selected value=''></option>
-            <option value='Video'>Video</option>
-            <option value='Image'>Image</option>
-            <option value='Text'>Text</option>
-            <option value='Website'>Website</option>
-          </select>
-        </label>
-        {showSubForm()}
-        <p>Make this Formula public?</p>
-        <label>Yes
-          <input type='radio' name='isPublic' value='true' />
-        </label>
+        <label htmlFor='contentType'>Content Type:</label>
+        <select name='contentType' onChange={handleTypeSelect} required>
+          <option hidden disabled selected value=''></option>
+          <option value='Video'>Video</option>
+          <option value='Image'>Image</option>
+          <option value='Text'>Text</option>
+          <option value='Website'>Website</option>
+        </select>
 
-        <label>No
-          <input type='radio' name='isPublic' value='false' />
-        </label>
+        {showSubForm()}
+        <div className='is-public--sub-form'>
+          <p>Make this Formula public?</p>
+          <label htmlFor='yes-isPublic'>Yes</label>
+          <input type='radio' name='isPublic' value='true' id='yes-isPublic' />
+
+          <label htmlFor='no-isPublic'>No</label>
+          <input type='radio' name='isPublic' id='no-isPublic' value='false' />
+        </div>
         <input type='submit' value='Create' />
 
-        <button name='showElementForm' onClick={props.hideForm}>Close</button>
+        <button name='showElementForm' onClick={props.hideForm} className='form-close-btn'>
+          <span className="u-hide-visually">Close</span>
+          <svg className="c-modal__close-icon" viewBox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30"></path></svg>
+        </button>
       </form>
     </Fragment>
   )

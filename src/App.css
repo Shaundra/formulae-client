@@ -33,9 +33,9 @@ body {
   height: 100%;
   z-index: 10; /* This must be at a higher index to the rest of your page content */
   transform: translateZ(0);
-  background-color: rgba(color(white), 0.05);
+  background-color: rgba(255, 255, 255, 0.55);
   /* background-color: white; */
-  /* opacity: 10%; */
+  /* opacity: .; */
 }
 
 /* .c-modal {
@@ -60,13 +60,12 @@ body {
   }
 } */
 
-
 .c-modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  /* width: 100%; */
-  height: auto;
+  width: 50%;
+  height: 50%;
   padding: 2.5em 1.5em 1.5em 1.5em;
   background-color: #FFFFFF;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
@@ -84,7 +83,55 @@ body {
   } */
 }
 
-.c-modal__close {
+.form-header {
+  font-size: 1.5rem;
+}
+
+form {
+  display: block;
+}
+
+form p {
+  /* float: left; */
+  /* width: 25%; */
+  display: inline-block;
+}
+
+form label { /* for radio button */
+  /* display: inline-block; */
+  /* float: left; */
+  /* width: 25%; */
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.is-public--sub-form {
+  display: inline-block;
+}
+
+.is-public--sub-form label {
+  display: inline-block;
+  margin: 0 0 0 .5rem;
+}
+
+/* form input[type="text"], form input[type="url"] { */
+form input:not([type='submit']):not([type='radio']), form select {
+  width: 95%;
+  /* float: left; */
+  /* box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 0%, 0.04); */
+  border-width: 0 0 2px;
+  border-color: #ddd;
+  /* border-radius: 0; */
+  margin: 0 0 5px 10px;
+  font-size: .8rem;
+}
+
+form input[type="submit"] {
+  display: block;
+  width: 95%;
+}
+
+.c-modal__close, .form-close-btn {
   position: absolute;
   top: 0;
   right: 0;
@@ -103,9 +150,11 @@ body {
   stroke: black;
   stroke-linecap: round;
   stroke-width: 2;
+  pointer-events: none;
 }
 
 .c-modal__body {
+  font-family: 'Proza Libre', sans-serif;
   padding-top: .25em;
 }
 

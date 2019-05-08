@@ -73,6 +73,7 @@ const Formula = (props) => {
                   addElement={setAllElements}
                   id='element-form'
                 />}
+          closeFunc={handleFormClick}
           ariaLabelledBy='element-form'
         />
       )

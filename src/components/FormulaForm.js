@@ -33,23 +33,19 @@ const FormulaForm = (props) => {
   }
 
   return (
-    <form onSubmit={submitForm}>
-      <label>Title:
-        <input type='text' placeholder='Formula Title' name='title' required />
-      </label>
+    <form name='formula-form' onSubmit={submitForm}>
+      <label htmlFor='title'>Title:</label>
+      <input type='text' placeholder='Formula Title' name='title' required />
 
-      <label>Description
-        <input type='text' placeholder='Formula Description' name='description' required />
-      </label>
+      <label htmlFor='description'>Description</label>
+      <input type='text' placeholder='Formula Description' name='description' required />
 
       <p>Make this Formula public:</p>
-      <label>Yes
-        <input type='radio' name='isPublic' value='true' />
-      </label>
+      <label htmlFor='yes-isPublic'>Yes</label>
+      <input type='radio' name='isPublic' value='true' id='yes-isPublic' />
 
-      <label>No
-        <input type='radio' name='isPublic' value='false' />
-      </label>
+      <label htmlFor='no-isPublic'>No</label>
+      <input type='radio' name='isPublic' id='no-isPublic' value='false' />
 
       <input type='submit' value='Create' />
       {/* style this button to be an x, or rename 'Discard' */}

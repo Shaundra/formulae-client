@@ -17,7 +17,7 @@ const UserForm = (props) => {
         props.setUser(user)
 
         console.log(user, 'inside fetch', props.userData, 'a', user.user.formulas)
-        
+
         props.setFormulae(user.user.formulas)
         props.browseHistory.push('/formulae')
         // returns a user object, shape at bottom of file
@@ -48,22 +48,21 @@ const UserForm = (props) => {
       {/* if loggedIn <Redirect /> */}
       <h2>{props.formRoute === 'login' ? 'Log-in' : 'Sign-up'}</h2>
 
-      <form onSubmit={handleFormSubmit}>
+      <form className='user-form' onSubmit={handleFormSubmit}>
         {props.formRoute === 'login'
         ?
         null :
-        <label>Email:
+        <Fragment>
+          <label htmlFor='email'>Email:</label>
           <input type='text' placeholder='Email' name='email'/>
-        </label>
+        </Fragment>
         }
 
-        <label>Username:
-          <input type='text' placeholder='Username' name='name'/>
-        </label>
+        <label htmlFor='name'>Username:</label>
+        <input type='text' placeholder='Username' name='name'/>
 
-        <label>Password:
-          <input type='text' placeholder='Create Password' name='password' />
-        </label>
+        <label htmlFor='password'>Password:</label>
+        <input type='text' placeholder='Create Password' name='password' />
         {/* Add Password Confirmation Field */}
         <input type='submit' value='Continue' />
       </form>
