@@ -92,6 +92,7 @@ const VideoElement = (props) => {
         {/* if showForm, showForm and hide Add Note button */}
         {/* iterate through notes for this element (from api) and render a Note for each */}
         <div className='note-box'>
+          <h4>Notes</h4>
           {/* {props.elmt.notes.map( note => ( */}
           {allNotes.map( note => (
             <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} player={player} />

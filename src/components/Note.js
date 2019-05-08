@@ -35,7 +35,7 @@ const Note = (props) => {
           }
           {props.note.content}
         </p>
-        <p>{formatDate(props.note.created_at)}</p>
+        <p className='note-time'>{formatDate(props.note.created_at)}</p>
       </Fragment>
     )
   }
@@ -69,11 +69,15 @@ const Note = (props) => {
     //   <p>{props.note.content}</p>
     //   <p>{props.note.updated_at}</p>
     // </div>
-    <Fragment>
-      <button name='delete' onClick={handleElementState}>Delete Note</button>
+    <div className='notes'>
+      <button name='delete' onClick={handleElementState}>
+        <svg class="c-modal__close-icon" viewBox="0 0 40 40">
+          <path d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
+        </svg>
+      </button>
       {props.note.notable_type === 'Formula' && renderFormulaNote(props)}
       {props.note.notable_type === 'Element' && renderElementNote(props)}
-    </Fragment>
+    </div>
   )
 }
 

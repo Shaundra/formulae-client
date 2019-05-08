@@ -63,6 +63,7 @@ const ImageElement = (props) => {
         <button onClick={handleFormClick}>Add Note</button>
       }
       <div className='note-box'>
+        <h4>Notes</h4>
         {/* {props.elmt.notes.map( note => ( */}
         {allNotes.map( note => (
           <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
