@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
 import Formula from '../components/Formula'
 import FormulaForm from '../components/FormulaForm'
+import Modal from '../components/Modal'
 
 const FormulaePage = (props) => {
   const [allFormulae, setAllFormulae] = useState(props.formulae)
@@ -18,12 +19,16 @@ const FormulaePage = (props) => {
   const renderForm = () => {
     if (showForm) {
       return (
-        <FormulaForm
-          // parentID={props.elmt.id}
-          // contentType={props.elmt.content_type}
-          hideForm={handleFormClick}
-          allFormulae={allFormulae}
-          addFormula={setAllFormulae}
+        <Modal
+          compToRender={
+            <FormulaForm
+              // parentID={props.elmt.id}
+              // contentType={props.elmt.content_type}
+              hideForm={handleFormClick}
+              allFormulae={allFormulae}
+              addFormula={setAllFormulae}
+            />
+          }
         />
       )
     }

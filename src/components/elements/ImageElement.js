@@ -107,7 +107,7 @@ const ImageElement = (props) => {
   return (
     <div className='element-box'>
       <button name='showEditForm' onClick={handleFormClick}>Edit Element</button>
-      {/* <button name='delete' onClick={handleElementState}>Delete Element</button> */}
+
       <h3>{props.elmt.title}</h3>
       <img src={props.elmt.source_url} /> {/* add alt attribute */}
       {/* iterate through notes for this element (from api) and render a Note for each */}

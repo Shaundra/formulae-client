@@ -3,6 +3,7 @@ import { API_ROOT, HEADERS, AUTH_HEADERS } from '../../constants';
 
 const EditElementForm = (props) => {
   const showSubForm = () => {
+    // add subform for editing websiteElement metadata
     if (props.elmt.content_type === 'text') {
       return (
         <Fragment>
