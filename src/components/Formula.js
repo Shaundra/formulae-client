@@ -86,15 +86,19 @@ const Formula = (props) => {
         <h2>{props.formula.title}</h2>
         <p>{props.formula.description}</p>
         {/* Add formula notes here */}
-        <div className='note-box'>
-          {allNotes.map( note => (
-            <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
-          ))}
-        </div>
-        {/* Add addNote form here */}
+        {allNotes.length > 0 &&
+          <div className='note-box'>
+            <h4>Notes</h4>
+
+            {allNotes.map( note => (
+              <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
+            ))}
+          </div>
+        }
+
         {renderForm()}
         {!showForm.showNoteForm &&
-          <button name='showNoteForm' onClick={handleFormClick}>Add Note</button>
+          <button name='showNoteForm' className='add-note-btn' onClick={handleFormClick}>Add Note</button>
         }
       </div>
 
