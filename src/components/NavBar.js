@@ -61,11 +61,27 @@ const NavBar = (props) => {
       {isVisible.showNav &&
         <div className='top-nav'>
           <button
-            className={`top-nav top-nav--centered ${isVisible.navTransparent ? 'top-nav--transparent' : null}`}
+            className={`top-nav--btn top-nav--centered ${isVisible.navTransparent ? 'top-nav--transparent' : null}`}
             onClick={handleClick}
             name='home-logo'
           >Formula(e)
-        </button>
+          </button>
+          {props.location.pathname === '/formulae' &&
+            <button
+              className={`top-nav--btn top-nav--right ${isVisible.navTransparent ? 'top-nav--transparent' : null}`}
+              onClick={handleClick}
+              name='home-logo'
+            >Create a Formula
+            </button>
+          }
+          {RegExp(/^\/formula\//).test(props.location.pathname) &&
+            <button
+              className={`top-nav--btn top-nav--right ${isVisible.navTransparent ? 'top-nav--transparent' : null}`}
+              onClick={handleClick}
+              name='home-logo'
+            >Add an Element
+            </button>
+          }
         {/* <button
           className='nav-btn'
           onClick={handleClick}
