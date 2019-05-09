@@ -2,7 +2,8 @@ body {
 
   /* background-color: rgba(0,0,0,0.4); */
   background-color: #eae7dc;
-  color: #1D1D1B;
+  /* color: #1D1D1B; */
+  color: #404040;
   /* opacity: 0.5; */
   background-image: linear-gradient(to bottom right, #f7f7f7, #eae7dc 75%);
   /* min-height: calc(100vh - 1.75vw - 1.75vw); */
@@ -127,8 +128,42 @@ form input:not([type='submit']):not([type='radio']), form select {
 }
 
 form input[type="submit"] {
-  display: block;
-  width: 95%;
+  display: inline-block;
+  width: 100%;
+  font-family: 'Proza Libre', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #eae7dc;
+  padding: 8px;
+  border: none;
+  color: #4B4B2F;
+  font-weight: 600;
+}
+
+form input[type="submit"]:hover {
+  background-color: #D8C3A5;
+  color: #E98074;
+  outline: 0;
+  box-shadow:  0px 0px 5px #E98074;
+}
+
+.delete-btn {
+  display: inline-block;
+  width: 100%;
+  font-family: 'Proza Libre', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  color: #4B4B2F;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.delete-btn:hover {
+  background-color: #D8C3A5;
+  color: #E98074;
+  outline: 0;
+  box-shadow:  0px 0px 5px #E98074;
 }
 
 .c-modal__close, .form-close-btn {
@@ -137,7 +172,6 @@ form input[type="submit"] {
   right: 0;
   padding: .5em;
   line-height: 1;
-  background: #f6f6f7;
   border: 0;
   box-shadow: 0;
   cursor: pointer;
@@ -430,14 +464,14 @@ form input[type="submit"] {
   border: .12em solid transparent;
 }
 
-button[name='delete'] {
+/* button[name='delete'] {
   position: absolute;
   top: 0;
   right: 0;
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
+} */
 
 .note-time {
   font-size: xx-small;
