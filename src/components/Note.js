@@ -19,7 +19,6 @@ const Note = (props) => {
     return (
       <Fragment>
         <p>{props.note.content}</p>
-        <p>{formatDate(props.note.created_at)}</p>
       </Fragment>
     )
   }
@@ -35,7 +34,6 @@ const Note = (props) => {
           }
           {props.note.content}
         </p>
-        <p className='note-time'>{formatDate(props.note.created_at)}</p>
       </Fragment>
     )
   }
@@ -65,21 +63,32 @@ const Note = (props) => {
   }
 
   return (
-    // <div className='note-box' id={props.note.notable_id}>
-    //   <p>{props.note.content}</p>
-    //   <p>{props.note.updated_at}</p>
-    // </div>
     <div className='notes'>
-      <button name='delete' onClick={handleElementState}>
-        <svg className="c-modal__close-icon" viewBox="0 0 40 40">
-          <path d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
-        </svg>
-      </button>
       {props.note.notable_type === 'Formula' && renderFormulaNote(props)}
       {props.note.notable_type === 'Element' && renderElementNote(props)}
+      <div className='notes-footer'>
+        <p className='note-time'>{formatDate(props.note.created_at)}</p>
+        <button
+          name='delete'
+          className='far fa-trash-alt'
+          onClick={handleElementState}
+          title="Delete Note"
+        >
+          {/* <svg className="c-modal__close-icon" viewBox="0 0 40 40">
+            <path d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
+          </svg> */}
+          {/* <svg className='delete-circle-times' viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill='none' className='delete-circle'/>
+            <path
+              class="delete-x"
+              d="M22 22 78 78 M78 22 22 78"
+            />
+          </svg> */}
+        </button>
+      </div>
     </div>
   )
 }
 
 
-export default Note
+export default Note;

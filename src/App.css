@@ -86,6 +86,7 @@ body {
 
 .form-header {
   font-size: 1.5rem;
+  /* font-family: 'Proza Libre', sans-serif; */
 }
 
 form {
@@ -140,7 +141,7 @@ form input[type="submit"] {
   font-weight: 600;
 }
 
-form input[type="submit"]:hover {
+form input[type="submit"]:hover, [name='note-form'] button:hover {
   background-color: #D8C3A5;
   color: #E98074;
   outline: 0;
@@ -359,11 +360,13 @@ form input[type="submit"]:hover {
   text-decoration: none;
   border: none;
   text-align: left;
+  cursor: pointer;
 }
 
 .formula-card--link:hover h4, .formula-card--link:hover p{
   box-shadow: inset 0 -.3rem #E98074;
   background-color: #D8C3A5;
+  cursor: pointer;
 }
 
 .formula-card h4 {
@@ -459,9 +462,19 @@ form input[type="submit"]:hover {
   /* border-radius: 3px; */
 }
 
+.note-box h4 {
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: 'Proza Libre', sans-serif;
+  padding: 2px;
+  margin: 0;
+  border-bottom: 3px solid white;
+}
+
 .notes {
   position: relative;
-  border: .12em solid transparent;
+  border-bottom: .12em solid white;
+  margin: 10px;
 }
 
 /* button[name='delete'] {
@@ -473,8 +486,75 @@ form input[type="submit"]:hover {
   cursor: pointer;
 } */
 
-.note-time {
-  font-size: xx-small;
+p.note-time {
+  display: inline-block;
+  font-size: .8rem;
+  color: #4F4F4F;
+}
+
+.delete-circle-times {
+  /* width: 25px; */
+  /* height: 25px; */
+  /* fill: transparent; */
+  /* stroke: black; */
+  stroke-linecap: round;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.delete-circle {
+  stroke: #7ac142;
+}
+
+.delete-x {
+  stroke: #7ac142;
+}
+
+.notes p {
+  margin: 0 0 .5em 0;;
+}
+
+.notes span {
+  margin-right: 0.5em;
+}
+
+.notes-footer {
+  margin-left: 1em;
+}
+
+[name='note-form'] {
+  font-family: 'Proza Libre', sans-serif;
+  display: inline-block;
+  width: 100%;
+}
+
+[name='note-form'] textarea {
+  width: 98%;
+}
+
+[name='note-form'] button {
+  font-family: 'Proza Libre', sans-serif;
+  width: 100%;
+  cursor: pointer;
+}
+
+.add-note-btn {
+  display: inline-block;
+  width: 100%;
+  font-family: 'Proza Libre', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #404040;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.far.fa-trash-alt {
+  background: transparent;
+  border: none;
+  color: #4F4F4F;
+  cursor: pointer;
+  margin-left: 5%;
 }
 
 img {

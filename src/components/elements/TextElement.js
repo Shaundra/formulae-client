@@ -105,15 +105,18 @@ const TextElement = (props) => {
       {/* iterate through notes for this element (from api) and render a Note for each */}
       {renderForm()}
       {!showForm.showNoteForm &&
-        <button onClick={handleFormClick}>Add Note</button>
+        <button name='showNoteForm' className='add-note-btn' onClick={handleFormClick}>Add Note</button>
       }
-      <div className='note-box'>
-        <h4>Notes</h4>
-        {/* {props.elmt.notes.map( note => ( */}
-        {allNotes.map( note => (
-          <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes}/>
-        ))}
-      </div>
+
+      {allNotes.length > 0 &&
+        <div className='note-box'>
+          <h4>Notes</h4>
+
+          {allNotes.map( note => (
+            <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
+          ))}
+        </div>
+      }
     </div>
   )
 }
