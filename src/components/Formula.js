@@ -102,6 +102,8 @@ const Formula = (props) => {
         }
       </div>
 
+      <div className='gradient'></div>
+
       {!showForm.showElementForm &&
         <button name='showElementForm' onClick={handleFormClick}>Add Element</button>
       }

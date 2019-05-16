@@ -101,7 +101,7 @@ const TextElement = (props) => {
       <button name='showEditForm' onClick={handleFormClick}>Edit Element</button>
 
       <h3>{props.elmt.title}</h3>
-      <p>{props.elmt.content}</p>
+      <p><pre>{props.elmt.content}</pre></p>
       {/* iterate through notes for this element (from api) and render a Note for each */}
       {renderForm()}
       {!showForm.showNoteForm &&

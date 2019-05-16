@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
+import Modal from '../components/Modal'
 
 const UserForm = (props) => {
 
@@ -44,6 +45,8 @@ const UserForm = (props) => {
 
 // add email column to User
   return (
+    <Modal
+      compToRender={
     <Fragment>
       {/* if loggedIn <Redirect /> */}
       <h2>{props.formRoute === 'login' ? 'Log-in' : 'Sign-up'}</h2>
@@ -67,6 +70,8 @@ const UserForm = (props) => {
         <input type='submit' value='Continue' />
       </form>
     </Fragment>
+  }
+/>
   )
 }
 

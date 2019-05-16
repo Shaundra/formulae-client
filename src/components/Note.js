@@ -26,13 +26,13 @@ const Note = (props) => {
   const renderElementNote = (props) => {
     return (
       <Fragment>
-        <p>
           {props.note.seek_to_time
             ?
             <a href='#!' onClick={handleTimeClick}><span>{formatVidTime(props.note.seek_to_time)}</span></a>
             : null
           }
-          {props.note.content}
+        <p>
+          <pre>{props.note.content}</pre>
         </p>
       </Fragment>
     )

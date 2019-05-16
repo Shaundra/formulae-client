@@ -13,8 +13,6 @@ const ImageElement = (props) => {
   // combine above state into a useReducer
 
   const handleFormClick = (ev) => {
-    ev.persist()
-    console.log('in handleformclick', ev, ev.target)
     const formToShow = ev.target ? ev.target.name : ev
     const newDisplayStatus = !showForm[formToShow]
     setShowForm({...showForm, [formToShow]: newDisplayStatus})

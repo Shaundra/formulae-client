@@ -39,8 +39,6 @@ const WebsiteElement = (props) => {
   }
 
   const handleFormClick = (ev) => {
-    ev.persist()
-
     const formToShow = ev.target ? ev.target.name : ev
     const newDisplayStatus = !showForm[formToShow]
 
