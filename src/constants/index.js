@@ -5,11 +5,11 @@ export const HEADERS = {
   Accept: 'application/json'
 }
 
-export const AUTH_HEADERS = {
+export const AUTH_HEADERS = () => ({
   'Content-Type': 'application/json',
   Accept: 'application/json',
   Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).userToken}`
-}
+})
 
 export const YTAPILoaded = new Promise( resolve => {
   window.onYouTubeIframeAPIReady = () => resolve(window.YT)

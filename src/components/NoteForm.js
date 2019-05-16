@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { API_ROOT, HEADERS, AUTH_HEADERS } from '../constants';
+import { API_ROOT, AUTH_HEADERS } from '../constants';
 import { convertToSeconds } from '../helpers'
 // import FormValidator from 'validate-js'
 
@@ -66,7 +66,7 @@ const NoteForm = (props) => {
   const postFormData = (body) => {
     fetch(`${API_ROOT}/notes`, {
       method: 'POST',
-      headers: AUTH_HEADERS,
+      headers: AUTH_HEADERS(),
       body: JSON.stringify(body)
     })
       .then(response => response.json())

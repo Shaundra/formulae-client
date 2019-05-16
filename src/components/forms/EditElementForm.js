@@ -1,5 +1,4 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { API_ROOT, HEADERS, AUTH_HEADERS } from '../../constants';
 
 const EditElementForm = (props) => {
   const showSubForm = () => {
