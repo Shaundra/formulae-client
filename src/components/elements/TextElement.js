@@ -98,11 +98,17 @@ const TextElement = (props) => {
 
   return (
     <div className='element-box'>
-      <button name='showEditForm' onClick={handleFormClick}>Edit Element</button>
+      <button
+        name='showEditForm'
+        className='fas fa-pencil-alt'
+        onClick={handleFormClick}
+      >
+        {/* Edit Element */}
+      </button>
 
       <h3>{props.elmt.title}</h3>
       <p><pre>{props.elmt.content}</pre></p>
-      {/* iterate through notes for this element (from api) and render a Note for each */}
+
       {renderForm()}
       {!showForm.showNoteForm &&
         <button name='showNoteForm' className='add-note-btn' onClick={handleFormClick}>Add Note</button>

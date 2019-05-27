@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import NoteForm from '../NoteForm'
 import Note from '../Note'
 import { API_ROOT } from '../../constants'
@@ -65,7 +65,6 @@ const WebsiteElement = (props) => {
       const elmtSet = props.allElements.filter(elmt => elmt.id !== elmtID)
       props.setAllElements(elmtSet)
     }
-
   }
 
   const patchResponse = (jsonResponse, elmtID) => {
@@ -96,7 +95,14 @@ const WebsiteElement = (props) => {
 
   return (
     <div className='element-box'>
-      <button name='showEditForm' onClick={handleFormClick}>Edit Element</button>
+      <button
+        name='showEditForm'
+        className='fas fa-pencil-alt'
+        onClick={handleFormClick}
+      >
+        {/* Edit Element */}
+      </button>
+
       <h3>{props.elmt.title}</h3>
       <div className='site-preview'>
         <p>{siteContent.site_title}</p>
@@ -104,7 +110,7 @@ const WebsiteElement = (props) => {
           <img src={siteContent.site_img_url} />
         </a>
       </div>
-      {/* iterate through notes for this element (from api) and render a Note for each */}
+
       {renderForm()}
       {!showForm.showNoteForm &&
         <button name='showNoteForm' className='add-note-btn' onClick={handleFormClick}>Add Note</button>

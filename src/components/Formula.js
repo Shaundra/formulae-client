@@ -105,7 +105,7 @@ const Formula = (props) => {
       <div className='gradient'></div>
 
       {!showForm.showElementForm &&
-        <button name='showElementForm' onClick={handleFormClick}>Add Element</button>
+        <button name='showElementForm' id='show-element-form' onClick={handleFormClick}>Add Element</button>
       }
       <div className='elements'>
         {allElements.map( elmt => {

@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import NoteForm from '../NoteForm'
 import Note from '../Note'
 import { API_ROOT } from '../../constants'
@@ -40,7 +40,6 @@ const ImageElement = (props) => {
       const elmtSet = props.allElements.filter(elmt => elmt.id !== elmtID)
       props.setAllElements(elmtSet)
     }
-
   }
 
   const patchResponse = (jsonResponse, elmtID) => {
@@ -60,9 +59,6 @@ const ImageElement = (props) => {
 
     const jwt = JSON.parse(localStorage.getItem('user')).userToken
 
-    // console.log('in handle element state', reqBody, jwt, method, url)
-    // console.log('buttonType', ev.target.name)
-    // console.log('the event', ev)
     fetchJWT({url, method, reqBody, jwt})
       .then(response => response.json())
       .then(json => {
@@ -78,8 +74,6 @@ const ImageElement = (props) => {
   const renderForm = () => {
     if (showForm.showNoteForm) {
       return (
-        // <Modal
-        //   compToRender={
             <NoteForm
               parentID={props.elmt.id}
               contentType={props.elmt.content_type}
@@ -87,9 +81,6 @@ const ImageElement = (props) => {
               allNotes={allNotes}
               addNote={setAllNotes}
             />
-        //   }
-        //   ariaLabelledBy='edit-element-form'
-        // />
       )
     } else if (showForm.showEditForm) {
       return (
@@ -109,11 +100,17 @@ const ImageElement = (props) => {
 
   return (
     <div className='element-box'>
-      <button name='showEditForm' onClick={handleFormClick}>Edit Element</button>
+      <button
+        name='showEditForm'
+        className='fas fa-pencil-alt'
+        onClick={handleFormClick}
+      >
+        {/* Edit Element */}
+      </button>
 
       <h3>{props.elmt.title}</h3>
       <img src={props.elmt.source_url} /> {/* add alt attribute */}
-      {/* iterate through notes for this element (from api) and render a Note for each */}
+
       {renderForm()}
       {!showForm.showNoteForm &&
         <button name='showNoteForm' className='add-note-btn' onClick={handleFormClick}>Add Note</button>

@@ -128,7 +128,7 @@ form input:not([type='submit']):not([type='radio']), form select {
   font-size: .8rem;
 }
 
-form input[type="submit"], button[name='showElementForm'] {
+form input[type="submit"], #show-element-form {
   display: inline-block;
   width: 100%;
   font-family: 'Proza Libre', sans-serif;
@@ -141,7 +141,7 @@ form input[type="submit"], button[name='showElementForm'] {
   font-weight: 600;
 }
 
-form input[type="submit"]:hover, [name='note-form'] button:hover, button[name='showElementForm']:hover {
+form input[type="submit"]:hover, [name='note-form'] button:hover, .form-close-btn:hover, .fas.fa-pencil-alt:hover, .far.fa-trash-alt:hover {
   background-color: #D8C3A5;
   color: #E98074;
   outline: 0;
@@ -158,6 +158,7 @@ form input[type="submit"]:hover, [name='note-form'] button:hover, button[name='s
   color: #4B4B2F;
   padding: 8px;
   margin: 8px 0;
+  background: transparent;
 }
 
 .delete-btn:hover {
@@ -176,6 +177,7 @@ form input[type="submit"]:hover, [name='note-form'] button:hover, button[name='s
   border: 0;
   box-shadow: 0;
   cursor: pointer;
+  background: transparent;
 }
 
 .c-modal__close-icon {
@@ -384,6 +386,7 @@ form input[type="submit"]:hover, [name='note-form'] button:hover, button[name='s
   border: none;
   text-align: left;
   cursor: pointer;
+  background: transparent;
 }
 
 .formula-card--link:hover h4, .formula-card--link:hover p, .top-nav--right:hover{
@@ -435,6 +438,7 @@ form input[type="submit"]:hover, [name='note-form'] button:hover, button[name='s
   font-family: 'Cormorant Garamond', serif;
   font-weight: normal;
   font-size: 2rem;
+  margin-top: 0;
 }
 
 .element-box p {
@@ -604,6 +608,10 @@ p.note-time {
   color: #404040;
   padding: 8px;
   margin: 8px 0;
+  background: transparent;
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-style: solid;
+  border-width: 1px;
 }
 
 .far.fa-trash-alt {
@@ -612,6 +620,14 @@ p.note-time {
   color: #4F4F4F;
   cursor: pointer;
   margin-left: 5%;
+}
+
+.fas.fa-pencil-alt {
+  background: transparent;
+  border: none;
+  color: #4F4F4F;
+  cursor: pointer;
+  margin-left: 95%;
 }
 
 img {

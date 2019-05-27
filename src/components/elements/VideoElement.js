@@ -114,7 +114,13 @@ const handleElementState = (ev) => {
   return (
     <Fragment>
       <div className='element-box'>
-        <button name='showEditForm' onClick={handleFormClick}>Edit Element</button>
+        <button
+          name='showEditForm'
+          className='fas fa-pencil-alt'
+          onClick={handleFormClick}
+        >
+          {/* Edit Element */}
+        </button>
 
         <h3>{props.elmt.title}</h3>
         <div className='iframe-box'>
