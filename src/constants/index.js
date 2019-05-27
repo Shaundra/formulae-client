@@ -1,5 +1,5 @@
-// export const API_ROOT = 'http://localhost:3000'
-export const API_ROOT = 'https://formulae-app-api.herokuapp.com'
+export const API_ROOT = 'http://localhost:3000'
+// export const API_ROOT = 'https://formulae-app-api.herokuapp.com'
 
 export const HEADERS = {
   'Content-Type': 'application/json',

@@ -81,7 +81,6 @@ const VideoElement = (props) => {
       const elmtSet = props.allElements.filter(elmt => elmt.id !== elmtID)
       props.setAllElements(elmtSet)
     }
-
   }
 
   const patchResponse = (jsonResponse, elmtID) => {
@@ -135,15 +134,13 @@ const handleElementState = (ev) => {
         {!showForm.showNoteForm &&
           <button name='showNoteForm' className='add-note-btn' onClick={handleFormClick}>Add Note</button>
         }
-        {/* if showForm, showForm and hide Add Note button */}
-        {/* iterate through notes for this element (from api) and render a Note for each */}
 
         {allNotes.length > 0 &&
           <div className='note-box'>
             <h4>Notes</h4>
 
             {allNotes.map( note => (
-              <Note key={note.id} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
+              <Note key={note.id} player={player} note={note} allNotes={allNotes} setAllNotes={setAllNotes} />
             ))}
           </div>
         }
