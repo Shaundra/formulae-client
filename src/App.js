@@ -10,92 +10,39 @@ import FormulaForm from './components/FormulaForm'
 import UserForm from './containers/UserForm'
 import HomePage from './containers/HomePage'
 import NavBar from './components/NavBar'
-import { UserProvider } from './helpers/hooks'
+import { UserProvider, useUser } from './helpers/hooks'
 
 
 const App = () => {
-  // switch useState to useReducer
-  // const [formulaData, setFormulaData] = useState({formulas: []})
-  const [userData, setUserData] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const [userData, setUserData] = useState([])
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const { user } = useUser()
+  //
+  // const [formulaData, setFormulaData] = useState([])
 
-  const [formulaData, setFormulaData] = useState([])
-
-  // try this w useEffect / hooks
-  // grabbing data from login instead now
-  // useEffect( () => {
-  //   // update to fetch current user
-  //   // const userId = userData.user.id ? userData.user.id : null
-  //   fetch(API_ROOT + '/users/1', {
-  //   // fetch(API_ROOT + `/users/${userId}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem('userToken')}`
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       // console.log(json)
-  //       // console.log(json.formulas[0])
-  //       setFormulaData(json.formulas)
-  //       // setFormulaData(json)
-  //     })
-  // }, [userData])
-
-  // const defFormulaRoutes = () => {
-  //   formulaData.formulas.map(formula => (
-  //     <Route
-  //       exact path={`/formula/${formula.id}`}
-  //       render={(props) => (
-  //         <Formula formula={formula}/>
-  //       )}
-  //     />
-  //   ))
-  // }
-
-  // const getData = () => {
-  //   if (isLoggedIn) {
-  //     fetch(API_ROOT + '/users/1', {
-  //       // fetch(API_ROOT + `/users/${userId}`, {
-  //       method: 'GET',
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem('userToken')}`
-  //       }
-  //     })
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       // console.log(json)
-  //       // console.log(json.formulas[0])
-  //       setFormulaData(json.formulas)
-  //       // setFormulaData(json)
-  //     })
-  //   }
-  // }
-// history={history}
   return (
     <Fragment>
-      {/* {console.log('in render', formulaData)} */}
       <UserProvider>
         <Router>
           <Route
             exact path='/home'
             render={(props) => {
-              if (isLoggedIn) {
-                return (
-                  <Redirect to='/formulae'/>
-                )
-              } else {
+              // if (isLoggedIn) {
+              //   return (
+              //     <Redirect to='/formulae'/>
+              //   )
+              // } else {
                 return (
                   <HomePage
-                    setLogin={setIsLoggedIn}
-                    isLoggedIn={isLoggedIn}
+                    // setLogin={setIsLoggedIn}
+                    // isLoggedIn={isLoggedIn}
                     browseHistory={props.history}
-                    setUser={setUserData}
-                    userData={userData}
-                    setFormulae={setFormulaData}
+                    // setUser={setUserData}
+                    // userData={userData}
+                    // setFormulae={setFormulaData}
                   />
                 )
-              }
+              // }
             }}
           />
           {/* <Route
@@ -124,7 +71,7 @@ const App = () => {
               />
             )}
           /> */}
-          {isLoggedIn && <NavBar />}
+          {/* {isLoggedIn && <NavBar />} */}
           <Route
             exact path='/formulaform'
             render={(props) => (
@@ -133,27 +80,23 @@ const App = () => {
             )}
           />
           <div className='main'>
+            {/* <Switch> */}
           <Route
             exact path='/formulae'
             render={(props) => (
               <FormulaePage
-                formulae={formulaData}
+                // formulae={formulaData}
                 // formulae={formulaData.formulas}
+                // isLoggedIn={isLoggedIn}
                 browseHistory={props.history}
               />
             )}
           />
-          {/* figure out why using this function doesn't give me any data*/}
-          {/* {defFormulaRoutes()} */}
-          {isLoggedIn && formulaData.map(formula => (
-            <Route
-              exact path={`/formula/${formula.id}`}
-              key={formula.id}
-              render={(props) => (
-                <Formula formula={formula} />
-              )}
-            />
-          ))}
+          <Route
+            path={'/formulae/:id'}
+            component={Formula}
+          />
+
           <Route exact path='/browse' />
           <Route exact path='/search' />
           <Route exact path='/elements' />

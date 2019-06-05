@@ -52,7 +52,6 @@ const UserForm = (props) => {
     <Modal
       compToRender={
     <Fragment>
-      {/* if loggedIn <Redirect /> */}
       <h2>{props.formRoute === 'login' ? 'Log-in' : 'Sign-up'}</h2>
 
       <form className='user-form' onSubmit={handleFormSubmit}>

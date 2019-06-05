@@ -11,10 +11,10 @@ const HomePage = (props) => {
       return (
         <UserForm
           formRoute={formRoute}
-          setUser={props.setUser}
-          userData={props.userData}
-          setFormulae={props.setFormulae}
-          setLogin={props.setLogin}
+          // setUser={props.setUser}
+          // userData={props.userData}
+          // setFormulae={props.setFormulae}
+          // setLogin={props.setLogin}
           browseHistory={props.browseHistory}
           formState={formState}
 
@@ -35,17 +35,17 @@ const HomePage = (props) => {
     })
   }
 
-  const handleRedirect = () => {
-    if (props.isLoggedIn) {
-      return <Redirect to='/formulae' />
-    }
-  }
+  // const handleRedirect = () => {
+  //   if (props.isLoggedIn) {
+  //     return <Redirect to='/formulae' />
+  //   }
+  // }
 
   return (
     // Sign-up OR Log-in
     // if logged-in Redirect to /formulae
     <Fragment>
-      {handleRedirect()}
+      {/* {handleRedirect()} */}
       {displayForm(formState.formType)}
       <button onClick={handleClick} name='signUp'>Sign-up</button>
       <button

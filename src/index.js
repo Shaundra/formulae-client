@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { UserProvider } from './helpers/hooks'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
