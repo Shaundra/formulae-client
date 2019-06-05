@@ -2,9 +2,11 @@ import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
 // import { BrowserRouter as Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { useUser } from '../helpers/hooks'
 
 
 const NavBar = (props) => {
+  const { setAccessToken } = useUser()
   const [isVisible, setIsVisible] = useState({
     showNav: true,
     prevScrollPos: window.pageYOffset,
@@ -36,6 +38,9 @@ const NavBar = (props) => {
       case 'allFormulae':
         props.history.push('/formulae')
         break
+      case 'log-out':
+        setAccessToken('')
+        break
     }
 
   }
@@ -55,7 +60,12 @@ const NavBar = (props) => {
   return (
     <Fragment>
       <div className='side-nav'>
-        <button className='nav-btn' onClick={handleClick} name='home'>Home</button>
+        <button className='nav-btn' onClick={handleClick} name='home'>
+          Home
+        </button>
+        <button className='nav-btn' onClick={handleClick} name='log-out'>
+          Log-out
+        </button>
         {/* <button className='nav-btn' onClick={handleClick}>ELEMENTS</button> */}
       </div>
       {isVisible.showNav &&

@@ -300,7 +300,8 @@ form input[type="submit"]:hover, [name='note-form'] button:hover, .form-close-bt
 
 .nav-btn {
   padding: 8px;
-  display: block;
+  /* display: block; */
+  display: inline-block;
   margin-bottom: 1rem;
   margin-left: .5rem;
   background: transparent;
