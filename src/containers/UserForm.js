@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
 import Modal from '../components/Modal'
+import { useUser } from '../helpers/hooks'
 
 const UserForm = (props) => {
+  const { setAccessToken } = useUser()
 
   const postFormData = (body, formRoute) => {
     fetch(`${API_ROOT}/${formRoute}`, {
@@ -11,16 +13,18 @@ const UserForm = (props) => {
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then((user) => {
-        const userData = JSON.stringify({'userToken': user.jwt, user})
-        localStorage.setItem('user', userData)
-        props.setLogin(true)
-        props.setUser(user)
+      .then((userAPI) => {
+        setAccessToken(userAPI.jwt)
+        // const userData = JSON.stringify({'userToken': user.jwt, user})
+        // localStorage.setItem('user', userData)
+        // props.setLogin(true)
+        // props.setUser(user)
 
-        console.log(user, 'inside fetch', props.userData, 'a', user.user.formulas)
+        // console.log(user, 'inside fetch', props.userData, 'a', user.user.formulas)
 
-        props.setFormulae(user.user.formulas)
+        // props.setFormulae(user.user.formulas)
         props.browseHistory.push('/formulae')
+
         // returns a user object, shape at bottom of file
         // maybe set a userData state?
         // if successful, redirect to /formulae
