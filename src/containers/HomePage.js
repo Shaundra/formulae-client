@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 import UserForm from './UserForm'
+// import { useUser } from './helpers/hooks'
 
 const HomePage = (props) => {
+  // const { user } = useUser()
   const [formState, setFormState] = useState({showForm: false, formType: ''})
 
   const displayForm = (formType) => {
@@ -36,7 +38,7 @@ const HomePage = (props) => {
   }
 
   // const handleRedirect = () => {
-  //   if (props.isLoggedIn) {
+  //   if (user.name) {
   //     return <Redirect to='/formulae' />
   //   }
   // }

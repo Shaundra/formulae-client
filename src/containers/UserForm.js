@@ -23,7 +23,7 @@ const UserForm = (props) => {
         // console.log(user, 'inside fetch', props.userData, 'a', user.user.formulas)
 
         // props.setFormulae(user.user.formulas)
-        props.browseHistory.push('/formulae')
+        // props.browseHistory.push('/formulae')
 
         // returns a user object, shape at bottom of file
         // maybe set a userData state?
