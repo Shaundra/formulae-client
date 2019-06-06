@@ -1,3 +1,7 @@
+#root {
+  min-height: 100%;
+}
+
 body {
 
   /* background-color: rgba(0,0,0,0.4); */
@@ -8,6 +12,7 @@ body {
   background-image: linear-gradient(to bottom right, #f7f7f7, #eae7dc 75%);
   /* min-height: calc(100vh - 1.75vw - 1.75vw); */
   min-height: 100vh;
+  height: 100%;
 }
 
 .main { /* src */
@@ -24,6 +29,82 @@ body {
 
 .App {
   text-align: center;
+}
+
+.home-container {
+  height: 100%;
+  position: relative;
+  width: 99%;
+  margin: 0 auto;
+  display: block;
+  color: #404040;
+}
+
+.home-btn-container {
+  position: absolute;
+  left: 50%;
+  margin: 1rem 0 0 0;
+  top: 70%;
+  width: 15rem;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: #404040;
+}
+
+.homepage-btn {
+  bottom: 0;
+  display: block;
+  width: 100%;
+  font-family: 'Proza Libre', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #404040;
+  padding: .5rem;
+  margin: .5rem 0;
+  background: transparent;
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-style: solid;
+  border-width: 1px;
+  background: white;
+  text-align: center;
+  letter-spacing: .05rem;
+}
+
+.logo {
+  position: relative;
+  padding-bottom: 58%;
+  margin: 8%;
+  display: block;
+}
+
+.logo > svg {
+  position: absolute;
+  display: inline-block;
+  left: 60%;
+  height: 15rem;
+  margin: 0;
+  top: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.logo > svg > path {
+  stroke-width: .5;
+  fill: #e98074;
+  stroke: #e98074;
+}
+
+.logo > h2 {
+  position: absolute;
+  display: inline-block;
+  font-size: 4rem;
+  font-family: 'Cormorant Garamond', serif;
+  left: 40%;
+  color: #404040;
+  font-weight: 600;
+  margin: 0;
+  top: 65%;
+  letter-spacing: 5px;
+  transform: translate(-50%, -50%);
 }
 
 .c-modal-cover {

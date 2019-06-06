@@ -15,19 +15,6 @@ const UserForm = (props) => {
       .then(response => response.json())
       .then((userAPI) => {
         setAccessToken(userAPI.jwt)
-        // const userData = JSON.stringify({'userToken': user.jwt, user})
-        // localStorage.setItem('user', userData)
-        // props.setLogin(true)
-        // props.setUser(user)
-
-        // console.log(user, 'inside fetch', props.userData, 'a', user.user.formulas)
-
-        // props.setFormulae(user.user.formulas)
-        // props.browseHistory.push('/formulae')
-
-        // returns a user object, shape at bottom of file
-        // maybe set a userData state?
-        // if successful, redirect to /formulae
       })
   }
 
