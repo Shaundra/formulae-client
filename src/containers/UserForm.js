@@ -34,6 +34,13 @@ const UserForm = (props) => {
     postFormData(body, props.formRoute)
   }
 
+  const closeForm = () => {
+    props.setFormState({
+      showForm: false,
+      formType: ''
+    })
+  }
+
 // add email column to User
   return (
     <Modal
@@ -58,6 +65,11 @@ const UserForm = (props) => {
         <input type='text' placeholder='Create Password' name='password' />
         {/* Add Password Confirmation Field */}
         <input type='submit' value='Continue' />
+
+        <button name='showElementForm' onClick={closeForm} className='form-close-btn'>
+          <span className="u-hide-visually">Close</span>
+          <svg className="c-modal__close-icon" viewBox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30"></path></svg>
+        </button>
       </form>
     </Fragment>
   }

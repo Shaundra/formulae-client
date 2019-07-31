@@ -11,6 +11,7 @@ const HomePage = (props) => {
       return (
         <UserForm
           formRoute={formRoute}
+          setFormState={setFormState}
         />
       )
     }

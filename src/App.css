@@ -75,6 +75,7 @@ body {
   padding-bottom: 58%;
   margin: 8%;
   display: block;
+  z-index: -1;
 }
 
 .logo > svg {
