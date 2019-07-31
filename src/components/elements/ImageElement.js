@@ -57,9 +57,9 @@ const ImageElement = (props) => {
 
     const reqBody = method === 'PATCH' ? buildPatchBody(ev) : {}
 
-    const jwt = JSON.parse(localStorage.getItem('user')).userToken
+    // const jwt = JSON.parse(localStorage.getItem('user')).userToken
 
-    fetchJWT({url, method, reqBody, jwt})
+    fetchJWT({url, method, reqBody, jwt: props.jwt})
       .then(response => response.json())
       .then(json => {
         console.log('this is the json resposne', json, json.status)

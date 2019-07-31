@@ -1,12 +1,14 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, AUTH_HEADERS } from '../constants';
 import { convertToSeconds } from '../helpers'
+import { useUser } from '../helpers/hooks'
 // import FormValidator from 'validate-js'
 
 // a NoteForm needs to be told its parent's (sub)type -- Formula or (Video, Text, Img, Site) Element. via props or state?
 
 const NoteForm = (props) => {
   const [showTime, setShowTime] = useState(false)
+  const { accessToken } = useUser()
 
   // const fieldsToValidate = [
   //   {
@@ -66,7 +68,7 @@ const NoteForm = (props) => {
   const postFormData = (body) => {
     fetch(`${API_ROOT}/notes`, {
       method: 'POST',
-      headers: AUTH_HEADERS(),
+      headers: AUTH_HEADERS(accessToken),
       body: JSON.stringify(body)
     })
       .then(response => response.json())

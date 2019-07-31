@@ -21,14 +21,14 @@ const NavBar = (props) => {
     }
   }, [isVisible.prevScrollPos])
 
-
-  const [showForm, setShowForm] = useState(false)
-
   const handleClick = (ev) => {
     switch (ev.target.name) {
       case 'home':
+        props.history.push('/formulae')
+        break
       case 'home-logo':
-        props.history.push('/home')
+        // props.history.push('/home')
+        props.history.push('/formulae')
         break
       case 'search':
         props.history.push('/search')
@@ -76,14 +76,14 @@ const NavBar = (props) => {
             name='home-logo'
           >Formula(e)
           </button>
-          {props.location.pathname === '/formulae' &&
+          {/* {props.location.pathname === '/formulae' &&
             <button
               className={`top-nav--btn top-nav--right ${isVisible.navTransparent ? 'top-nav--transparent' : null}`}
               onClick={handleClick}
-              name='home-logo'
+              name='addFormula'
             >Create a Formula
             </button>
-          }
+          } */}
           {RegExp(/^\/formula\//).test(props.location.pathname) &&
             <button
               className={`top-nav--btn top-nav--right ${isVisible.navTransparent ? 'top-nav--transparent' : null}`}

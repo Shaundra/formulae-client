@@ -44,7 +44,10 @@ const FormulaePage = (props) => {
     <Fragment>
       {renderForm()}
       {!showForm &&
-        <button onClick={handleFormClick}>Create New Formula</button>
+        <button onClick={handleFormClick}
+          className='add-note-btn'
+        >
+          Create New Formula</button>
       }
       <h4 className='formulae-count'><strong>{allFormulae.length}</strong> formulae</h4>
 

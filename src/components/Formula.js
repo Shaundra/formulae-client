@@ -10,7 +10,7 @@ import Modal from './Modal'
 import { useUser } from '../helpers/hooks'
 
 const Formula = (props) => {
-  const { user } = useUser()
+  const { user, accessToken } = useUser()
   const formulaData = user.formulas.find(formula => formula.id === parseInt(props.match.params.id))
 
   const [allNotes, setAllNotes] = useState(formulaData.notes)
@@ -87,6 +87,7 @@ const Formula = (props) => {
                 elmt={elmt}
                 allElements={allElements}
                 setAllElements={setAllElements}
+                jwt={accessToken}
               />
               break
             case 'text':
@@ -95,6 +96,7 @@ const Formula = (props) => {
                 elmt={elmt}
                 allElements={allElements}
                 setAllElements={setAllElements}
+                jwt={accessToken}
               />
               break
             case 'image':
@@ -103,6 +105,7 @@ const Formula = (props) => {
                 elmt={elmt}
                 allElements={allElements}
                 setAllElements={setAllElements}
+                jwt={accessToken}
               />
               break
             case 'website':
@@ -111,6 +114,7 @@ const Formula = (props) => {
                 elmt={elmt}
                 allElements={allElements}
                 setAllElements={setAllElements}
+                jwt={accessToken}
               />
           }
         })}

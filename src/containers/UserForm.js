@@ -62,7 +62,7 @@ const UserForm = (props) => {
         <input type='text' placeholder='Username' name='name'/>
 
         <label htmlFor='password'>Password:</label>
-        <input type='text' placeholder='Create Password' name='password' />
+        <input type='password' placeholder='Enter Password' name='password' />
         {/* Add Password Confirmation Field */}
         <input type='submit' value='Continue' />
 

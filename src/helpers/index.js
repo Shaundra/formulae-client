@@ -27,8 +27,7 @@ export const fetchJWT = ({url, method='GET', reqBody={}, jwt=''}) => {
   if (jwt === '') {
     delete init.headers['Authorization']
   }
-  // console.log("HTTPR", url, init)
-  console.log(init)
+
   return fetch( url, init);
 }
 

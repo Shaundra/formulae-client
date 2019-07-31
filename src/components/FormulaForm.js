@@ -1,11 +1,14 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, AUTH_HEADERS } from '../constants';
+import { useUser } from '../helpers/hooks'
 
 const FormulaForm = (props) => {
+  const { accessToken } = useUser()
+
   const postFormData = (body) => {
     fetch(`${API_ROOT}/formulas`, {
       method: 'POST',
-      headers: AUTH_HEADERS(),
+      headers: AUTH_HEADERS(accessToken),
       body: JSON.stringify(body)
     })
       .then(response => response.json())

@@ -1,9 +1,10 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { API_ROOT, HEADERS } from '../constants';
 import { formatDate, fetchJWT, formatVidTime } from '../helpers'
+import { useUser } from '../helpers/hooks'
 
 const Note = (props) => {
-
+  const { accessToken } = useUser()
   // handle clicking on timestamp, need player passed down from Element
   const handleTimeClick = () => {
     if (props.player) {
@@ -44,9 +45,10 @@ const Note = (props) => {
     const noteID = props.note.id
     const url = `${API_ROOT}/notes/${noteID}`
     const method = 'DELETE'
-    const jwt = JSON.parse(localStorage.getItem('user')).userToken
 
-    fetchJWT({url, method, jwt})
+    // const jwt = JSON.parse(localStorage.getItem('user')).userToken
+
+    fetchJWT({url, method, jwt: accessToken})
       .then(response => response.json())
       .then(json => {
         if (json.status === 200) {

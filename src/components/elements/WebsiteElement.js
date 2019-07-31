@@ -80,9 +80,9 @@ const WebsiteElement = (props) => {
     const method = buttonType === 'delete' ? 'DELETE' : 'PATCH'
 
     const reqBody = method === 'PATCH' ? buildPatchBody(ev) : {}
-    const jwt = JSON.parse(localStorage.getItem('user')).userToken
+    // const jwt = JSON.parse(localStorage.getItem('user')).userToken
 
-    fetchJWT({url, method, reqBody, jwt})
+    fetchJWT({url, method, reqBody, jwt: props.jwt})
       .then(response => response.json())
       .then(json => {
         if (method === 'DELETE') {
